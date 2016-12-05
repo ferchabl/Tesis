@@ -1,0 +1,318 @@
+\chapter{Antecedentes}
+
+\section{Imágenes VIIRS}
+
+Las actividades humanas han cambiado drástica y rápidamente la cobertura de nuestro planeta; hace ya varias décadas se puso en manifiesto que los cambios de cobertura y el uso de suelo influyen directamente en los ciclos hidrológicos, en la pérdida de biodiversidad, en la erosión de los suelos y en el aumento de gases; los cuales a su vez incrementan el efecto invernadero. Los cambios climatológicos provocan el aumento y la intensidad de los desastres naturales en todo el planeta como los son incendios, inundaciones, huracanes y sequías. Por esta razón, diversos grupos especializados, gobiernos e instancias internacionales, se han unido para abordar esta problemática. 
+
+Desde finales de la década de los 80's, se llevaron a cabo proyectos creados para el monitoreo de coberturas globales, como el International Geosphere Biosphere Programme(IGBP), que permitió el mapeo de la cobertura terrestre usando los datos del sensor Advanced Very High Resolution Radiometer (AVHRR). El uso de este sensor permitió crear bases de datos globales con más de dos décadas de datos gracias a la adqusición diaria de imágenes. Sin embargo los datos AVHRR no son los más idóneos para estudios de la cobertura terrestre, porque tienen baja resolución espacial, lo cual implica notables problemas geométricos y radiométricos en la imágenes resultantes. 
+
+A pesar de no ser los más idóneos, los datos AVHRR tuvieron resultados suficientemente alentadores para motivar la creación de sensores diseñados específicamente para el monitoreo de las coberturas terrestres. Dentro de estos proyectos de percepción remota, el más ambicioso es el Earth Observing System (EOS) de la NASA (Administración Nacional de Aeronáutica y del Espacio), cuyo pricipal objetivo es la observación continua de los cambios globales, lo cual incluye el estudio integrado de la atmósfera, de los océanos y de la superficie terrestre. 
+
+Dentro del proyecto EOS sobresale el sensor llamado espectroradiómetro para imágenes de resolución moderado, o MODIS, por sus siglas en inglés, el cual fue creado por un equipo científico interdisciplinario. Este sensor está abordo de las plataformas Terra y Aqua. Sus datos cuentan con alta sensibilidad radiométrica, buena calidad geométrica, alta resolución temporal y son distribuidos de manera gratuita a través de diferentes portales de internet. Los datos crudos pueden obtenerse de manera directa contando con la tecnología necesaria; en México se cuenta con una antena y un equipo de trabajo de procesamiento y distribución dentro de la CONABIO (Comisión Nacional para el Conocimiento y Uso de la Biodiversidad). 
+
+Las experiencias derivadas de los trabajos con el sensor MODIS han permitido explorar una gran cantidad de aplicaciones potenciales que, al alcanzar el fin de sus operaciones, buscan ser aplicadas a la siguiente etapa de observación de la tierra a través del sensor VIIRS.
+
+El sensor VIIRS, por sus siglas en inglés Visible Infrared Imager Radiomer Suite, programado para volar en los satélites del proyecto National Polar-orbiting  Operational Environmental Satellite System (NPOESS), fue lanzado por primera vez el 28 de Octubre del 2011 a bordo del Satélite Soumi-NPP. Busca reemplazar y combinar las misiones de los sensores Advanced Very High Resolution Radiometer (AVHRR) y Operational Linescan System (OLS). Actualmente, imágenes de ambos sensores (AVHRR y OLS) tienen una serie de características que limitan su uso  en las operaciones de pronóstico, comparadas con imágenes provenientes de satélites geostacionarios. 
+
+El sensor VIIRS posee una cobertura espectral que va de los 412 nm a los 12 micros. Proporciona mediciones parecidas a las del MODIS. Cuenta con 22 bandas. Las imágenes tienen una resolución de 375 m al nadir en 5 bandas y 750 m al nadir en las bandas restantes. Cuenta con una cobertura global completa:  productos de nubes, propiedades de aerosoles, tierra y océanos, temperatura de la superficie, del océano, tierra y hielo; además de detección de incendios. En este sensor se reduce el alargamiento del pixel con los límites de escaneo, la cobertura espectral es ligeramente menor, las bandas infrarojas son más largas para $CO_{2}$, el sistema de telescopio rotatorio permite un mejor control de la luz, la órbita es más alta, lo que permite la cobertura global completa en un día (de 705 Km a 830 Km). La cantidad radiométrica y la calidad espectral es similar a MODIS con datos de 12 bit, las calibraciones a bordo del satélite también son parecidas a las de MODIS, el impacto en el índice de vegetación es mínimo. La reducción de 36 bandas en MODIS a 22 en VIIRS se compensa en parte debido a las 7 bandas de amplificación dual en VIIRS que pueden ser usadas tanto para obtener datos de cobertura terrestre  como de superficies oceánicas, ya que cuenta con un sistema que permite ajustar las mediciones del sensor de acuerdo a la superficie a observar. Los algoritmos de VIIRS surgen del aprovechamiento y mejora de la herencia de MODIS, esperando dar continuidad a estos datos con coherencia. 
+
+En la imagen \ref{viirs_image} se muestra una imagen VIIRS, la cual corresponde al día 20 de enero del 2015 y fue recibida, procesada y donada por la CONABIO para realización de este trabajo. 
+
+\begin{figure}
+
+\centering
+\includegraphics[scale=.09]{ima_ejem.png}
+\caption{Ejemplo de una imagen VIIRS.}
+\label{viirs_image}
+
+\end{figure}
+
+
+\subsection{Características de las imágenes del sensor VIIRS}
+
+El sensor VIIRS cuenta con dos rosoluciones especiales: \textbf{Imaging(I)} a 375 metros \textit{at nadir} y \textbf{Moderate(M)} a 742 metros \textit{at nadir}. Cuenta con 22 bandas, 5 de las cuales son \textbf{Imaging} y las otras 16 bandas son \textbf{Moderate}.  En la tabla \ref{channel_decription} se muestra la descripción de las bandas 8 del sensor VIIRS de las cuales se hará  uso a lo largo del desarrollo de este trabajo. 
+
+\begin{table}[ht!]
+
+\begin{center}
+\begin{tabular}{| p{2cm} | p{2cm} | p{2cm} | p{5cm} |}
+\hline
+Banda & $\lambda$ (nm) & Tamaño del pixel Nadir (m) & Principal Aplicación(es)\\
+\hline
+I1 & 600 - 800 & 371 x 387 & Imágenes, Vegetación.\\
+\hline
+I2 & 845 - 885 & 371 x 387 & Vegetación.\\
+\hline 
+I3 & \fix{Falta este dato} & 371 x 387 & Capa de nieve.\\
+\hline
+M3 & 478 - 498 & 742 x 259 & Color del océano, Aerosoles.\\
+\hline
+M4 & 545 - 565 & 742 x 259 & Color del océano, Aerosoles.\\
+\hline
+M8 & 1230 - 1250 & 742 x 759 & Tamaño de partícula de las nubes.\\
+\hline
+M10 & 1580 - 1670 & 742 x 776 & Mapa binario de nieve.\\
+\hline
+M11 & 2225 - 2275 & 742 x 776 & Nubes.\\
+\hline
+\end{tabular}
+\end{center} 	
+\caption{Descripción de las bandas del sensor VIIRS.} \label{channel_decription}
+
+\end{table}
+
+Las bandas del sensor VIIRS contienen la información de la Reflactancia de la Superficie y los datos están representados en enteros de 12 bits. La información adicional incluye el tipo de proyección, sistema de coordenadas, elipsoide, datum y todo lo necesario para que la imagen pueda ser automáticamente posicionada en un sistema de referencia espacial. Los datos básicos del satélite son transmitidos a la tierra como archivos RDR (Raw Data Records). Los datos son procesados y convertidos a archivos SDR (Sensor Data Records). Un número limitado de archivos SDR son procesados y convertidos a un archivo EDR(Environmental Data Record). El producto SR(Reflactacia de la Superficie) pertenece a este grupo de datos EDR y cada archivo VIIRS se encuentra en formato HDF-5. 
+
+Los valores de la reflactancia son escalados a una representación de 16 bits. Los datos ocupan 15 bits de un entero de 16 bits, el bit más significativo indica valores inválidos. Los valores de reflactancia sobre el rango dinámico $[D_{min}, D_{max}]$ es escalado al rango $[0, 32767]$ y representando en una variable entera. 
+
+En la tabla \ref{invalid_values} se muestran los valores utilizados en la generación de máscaras que definen las áreas que no son de interés durante el procesamiento de las bandas. Para propósito de este trabjao, los valores de la taba menciona caen fuera del rango de datos válido y por lo tanto no son utilizados.  
+
+\begin{table}[ht!]
+
+\begin{center}
+\begin{tabular}{| p{6cm} | p{2.5cm} | p{2.5cm} |}
+\hline
+Nombre y significado & 16-bit arreglos de enteros sin signos & 32 bit arreglos de números con puntos decimales \\
+\hline
+N/A - No Aplicable & 65535 & -999.9 \\
+\hline
+MISS - Valor requerido faltante al momento de procesar &  65534 & -999.8\\
+\hline
+OBPT - Borde de pixeles integrado (Pixel eliminado en el procesamiento SDR) & 65533 &-99.7\\
+\hline
+OGPT - Recorte de pixeles en el suelo (Superposicióm / empate Pixel eliminado durante el proceso EDR) & 65532 & -99.6 \\
+\hline
+ERR - Ocurrió un error durante el procesamiento / no existe convergencia & 65531 & -99.5 \\
+\hline
+ELINT - La intersección del elipsoide falló / la línea del instrumento de visión no intersepta la superficie terrestre & 65530 & -999.3 \\
+\hline
+VDNE - El valor no existe / el algoritmo de procesamiento no se ejecutó & 65529 & -999.3 \\
+\hline
+SOUB - Escalonada fuera de límites / solución no dentro del rando permitido & 65528 & -999.2 \\
+\hline
+
+\end{tabular}
+\end{center}
+\caption{Valores inválidos en imágenes VIIRS.} \label{invalid_values}
+
+\end{table}
+
+
+En el sensor VIIRS, el registro de las bandas se produce de forma simple debido a que las bandas I y M están alineadas, lo que significa que los marcos de resolución \textit{moderate} cubren casi la misma cobertura de superficie terrestre que dos marcos de resolución \textit{Imagery}. En conclusión VIIRS fue diseñado para colocar 2x2 pixeles de banda I dentro de un pixel de banda M. Como se muestra en la figura \ref{bandas_relation}. Esto no ocurría en los píxeles del sensor predecesor(MODIS),en el cual, un pixel de baja resolución (banda M) se sobrelapa sobre una región de 2x3 píxeles de la banda de alta rosolución (banda I) como se muestra en la figura \fix{realizar la figura relación entre banas modis}, haciendo más complejo el proceso de fusión. 
+
+\begin{figure}[ht!]
+
+\centering
+\includegraphics[scale=.4]{bandas.png}
+\caption{Relación entre bandas del sensor VIIRS.} \label{bandas_relation}
+\end{figure}
+
+\subsection{¿Quién hace uso de las imágenes VIIRS en México?}
+
+Desde 1992, la Comisión Nacional para el Conocimiento y Uso de la Biodiversidad (Conabio), promueve, coordina, apoya y realiza las actividades dirigidas al conocimiento de la diversidad biológica del país, así como para su conservación y uso sustentable. La CONABIO recibe en tiempo real imágenes tomadas por el sensor VIIRS a bordo del Satélite Soumi-NPP. 
+
+Para varias aplicaciones, es deseable tener bandas de resolución espacial grande, ya que se ha demostrado que la resolución óptima debería ser del orden de unos pocos de cientos de metros para operaciones de monitoreo y contrrol. A raíz de ello, la CONABIO tiene interés en obtener una alta resolución especial entre el grupo de imágenes VIIRS, que permitirá el monitoreo de distintos tipos de cobertura terrestre, teniendo así la posibilidad de hacer evalicones más precisas de las propiedades en la superficie y en los biomas. 
+
+La Conabio obtiene imágenes de satelitales del territorio nacional en alta resolución gracias a un programa de algoritmos diseñado por el Centro de Investigación en Matemáticas (CIMAT).
+
+Ambas instancias trabajaron en conjunto en el programa Fusión y Análisis de Imágenes Satelitales de Sensores MODIS y VIIRS para mejorar el procesamiento de las fotografías que muestran a detalle la biodiversidad del país, a fin de detectar el deterioro o mejoramiento de los ecosistemas y mares. 
+
+Por medio de la antena que se ubica en las instalacioens de la CONABIO se captan las señales de los satélites Aqua, Terra y Suomi NPP de la NASA, a través de los sensores MODIS y VIIRS. Una vez que se obtienen, son procesadas en el software creado en los laboratorios de CIMAT (el cual pertenece al Sistema de Centros Públicos de Investigación del Consejo Nacional de Ciencia y Tecnología (Conacyt) ), a fin de mejorar la resolución de las bandas M \fix{(baja reslución).} 
+
+\fix{Falta poner un poco más del trabajo que realiza la CONABIO}
+
+\section{Algoritmo CIMAT-CONBIO para fusión y análisis de imágenes de los sensores MODIS y VIIRS}
+
+A continuación describiremos el método de fusuión desarrollado entre el CIMAT y la CONABIO para imágenes MODIS \fix{referencia trabajo Judith}, dicho método es una mejora a la propuesta original de Trishenko \fix{referencia Trish}.
+
+En este proyecto se trabajo con imágenes del sensor MODIS. Aunque como se verá más delante, su uso se ha extendido a imágenes VIIRS. Lo apropiado de este procedimiento (diseñado para imágenes MODIS) para imágenes VIIRS se discutirá al final de esta sección. 
+
+El sensor llamado Espectroradiómetro para imágenes de resolución moderada (MODIS, por sus siglas en inglés) es un sensor que sobresale del proyecto EOS, de la Nasa; está abordo de las plataformas Terra y Aqua, que por sus características espaciales y espectrales es uno de los más importantes para el monitoreo de los procesos de cambio en la tierra. El equipo científico de MODIS Land (MODLAND) desarrolla métodos y algoritmos para generar productos sobre cubiertas terrestres. Sus datos cuentan con una alta sensibilidad radiométrica, buena calidad geométrica y alta resolución temporal. 
+
+El sensor MODIS cuenta con una alta sensibilidad radiométrica (12 bits y 16 bits) en 36 bandas espectrales, en un rango de longitud de onda que va de los $0,4 \mu m$ a los $14,4 \mu m$. Las primeras 19 bandas están posicionadas en la región del espectro electromagnético situado entre $0, 405 nm$ y $2, 144 nm$. Las bandas de la 1 a la 7 son útiles para las aplicaciones terrestres; las bandas 8 a la 16 para las observaciones oceánicas y las bandas 17 a la 19 para las mediciones atmosféricas. Las bandas 20 a la 36 cubren la porción del infrarrojo térmico del espectro de ($3, 600 -  14, 385 nm$). Dos bandas son tomadas a un resolución nominal de 250m \textit{at nadir}, cinco bandas a 500m \textit{at nadir} y las 29 restantes a 1km. MODIS posee una alta calidad geométrica que permite el monitoreo preciso de las alteraciones de la superficie terrestre. 
+
+Se sabe que existe alta correlacón entre las bandas de alta y baja resolución del sensor MODIS. Las bandas B3, B4, B6 y B7 tienen un alto grado de correlación lineal con la banda B1, mientras que la banda B6 tiene un grado menor de correlación con B2. Entonces las bandas B1, B2 y NDVI (Índice de vegetación normalizado) contribuyen como componentes básicos en la construcción de los otros canales. Los canales B3, B4, B6 y B7 muestran correlación negativa con NDVI y el canal B7 muestra una relación no lineal con NDVI.
+
+Trischenko propone el procesamiento de las imágenes MODIS haciendo una división en pequeños bloques y generando una regresión no lineal de cada una de las bandas  $B_{3}$ a $B_{7}$ a partir de las bandas $B_{1}, B_{2}$ y NVDI. 
+
+El modelo de regresión propuesto por Trishchenko (\ref{tris_eq}) tiene la forma: 
+
+\begin{equation}\label{tris_eq}
+G(B_{1}(x), B_{2}(x),a) = B_{n}(x) = a_{0} + (a_{1}B_{1}(x) + a_{2}B_{2}(x))(1 + a_{3}N(x) + a_{4}N(x)^{2}).
+\end{equation}
+
+Donde 
+
+\begin{equation}
+N(x) =  \frac{B_{2}(2)-B_{1}(x)}{B_{2}(x) + B_{1}(x)}.
+\end{equation}
+
+El propósito es encontrar los parámetros del modelo de regresión $B_{n}(x) = G(B_{1}(x), B_{2}(x), a)$ para estimar $B_{1}(x)$ a $B_{7}(x)$, donde G es una función paramétrica, $x$ un punto en $\mathbb{R}^{2}$, $N(x)$ es el índice normalizado de vegetación (NDVI) y $a$ un vector de parámetros que pretende minimizar el siguiente problema de mínimos cuadrados no lineales: 
+
+\begin{equation}
+\mathop{m\acute{i}n}_{a} F(a) = \sum_{i=1}^{m} [y_{i} - G(B_{1}(x_{i}), B_{2}(x_{i}),a)]^{2}
+\end{equation}
+
+Para resolver este problema, Trischenko propone usar el método de solución Levenger-Marquardt y así calcular los coeficientes de la regresión. 
+
+\comment{Esto implica que en cada solución se resuelve el siguiente sistema:
+
+\begin{equation}
+(\textbf{J}^{T} \textbf{J} + \mu\textbf{I})\textbf{h}_{lm} = -\textbf{g}
+\end{equation}
+
+Donde 
+\begin{center}
+$
+\textbf{J}_{ij} = \frac{\partial f_{i}(a)}{\partial x_{j}} (x)
+$
+\end{center}
+
+Y definimos $f_{i}(a) = y_{i} - G(B_{1}(x_{i}), B_{2}(x_{i}),a)$
+
+\begin{equation}
+J_{i}(a) = 
+\begingroup\makeatletter\def\f@size{1}
+\begin{bmatrix}
+1 \\
+[1 + a_{3}NVDI(x_{i}) + a_{4}NDVI^{2}(x_{i})] + [B_{1}(x_{i})]\\
+[1 + a_{3}NVDI(x_{i}) + a_{4}NDVI^{2}(x_{i})] + [B_{2}(x_{i})]\\
+[a_{1}B_{i}(x_{i}) + a_{2}B_{2}(x_{i})]NVDI(x_{i})\\
+[a_{1}B_{i}(x_{i}) + a_{2}B_{2}(x_{i})]NVDI(x_{i}) 
+\end{bmatrix} ^{T} \endgroup
+\end{equation}
+}
+
+La regresión se calcularía para todos los datos de una imágen, lo cual tendría una baja presición porque las características espaciales van cambiando conforme cambian las coberturas, por lo que, el modelo se implementa por ventanas, es decir en cada ventana se cácula una regresión. Esto permite que el modelo se comporte como si se adaptara espacialmente. Si las ventanas son muy pequeñas la regresiones pueden calcular mejor las características locales de las imágenes. Sin  embargo, dado a que se trabaja con imágenes de gran tamaño, se deben resolver cientos de miles de sistemas, por lo que una de las formas propuestas para reducir el tiempo computacional es trasladar el problema de mínimos cuadrados no lineales a uno de mínimos cuadrados lineales y resolverlo mediante una descomposición de Cholesky . Definimos $N(x) = NVDI(x)$, tomando la ecuación \ref{tris_eq} y desarrollando los múltiplos de dicha ecuación tenemos que:
+
+\begin{equation}
+\begin{split}
+B_{n}(x) = a_{0} + (a_{1}B_{1}(x) + a_{2}B_{2}(x))(1 + a_{3}NVDI(x) + a_{4}NVDI(x)^{2})\\
+B_{n}(x) = a_{0} + a_{1}B_{1}(x) + a_{2}B_{2}(x) + a_{1}a_{3}B_{1}(x)N(x) + a_{2}a_{3}B_{2}\\(x)N(x) + a_{1}a_{4}B_{1}(x)N^{2}(x) + a_{2}a_{4}B_{2}(x)N^{2}(x)\\
+\mathbf{B_{n}(x) =  \theta_{0} + \theta_{1}B_{1}(x) + \theta_{2}B_{2}(x) + \theta_{3}B_{1}(x)N(x) + \theta_{4}B_{2}(x)N(x) + \theta_{5}B_{1}N^{2}(x)}\\
+\mathbf{ + \theta_{6}B_{2}(x)N^{2}(x)} 
+\end{split}
+\end{equation}
+
+\textit{Ahora tenemos un modelo de regresión con parámetros lineales y en lugar de estimar cinco parámetros en el modelo no lineal, estimaremos siete parámetros en el modelo lineal.}
+
+Podemos entonces trasladar el problema de regresión como un problema de minimización cuadrática donde la función a minimizar está dado por: 
+
+\begin{equation}
+\begin{split}
+F (\theta) = \frac{1}{2}\sum_{i=1}^{m} (f(\theta))^{2} = \sum_{i=1}^{m} (y_{i} - B_{n}(\theta, x_{i}))^{2} = \frac{1}{2} ||A\theta - b||^{2}\\
+\mathbf{A\theta - b} = \begin{bmatrix}
+1 & B_{1}(x_{0}) & B_{2}(x_0) & B_{1}(x_{0})N(x_{0}) & B_{2}(x_{0})N(x_{0}) & B_{1}(x_{0})N^{2}(x_{0}) & B_{2}(x_{0})N^{2}(x_{0}) \\
+1 & B_{1}(x_{1}) & B_{2}(x_1) & B_{1}(x_{1})N(x_{1}) & B_{2}(x_{1})N(x_{1}) & B_{1}(x_{1})N^{2}(x_{1}) & B_{2}(x_{1})N^{2}(x_{1}) \\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots\\
+1 & B_{1}(x_{n-1}) & B_{2}(x_{n-1}) & B_{1}(x_{n-1})N(x_{n-1}) & B_{2}(x_{n-1})N(x_{n-1}) & B_{1}(x_{n-1})N^{2}(x_{n-1}) & B_{2}(x_{n-1})N^{2}(x_{n-1})
+\end{bmatrix}
+\end{split}
+\end{equation}
+
+La matriz $\mathbf{A^{T}A}$ puede tener columnas linealmente dependientes por perdida de datos o porque algunas de las componentes sea 0 (numéricamente), entonces la matriz $A^{T}A$ no será de rango completo. Por lo que se agrega un potencial cuadrático que penaliza la norma del vector de parámetros. A esto se le conoce como regresión Ridge. Con esto se garantiza la existencia de una solución única. La función objetivo en forma matricial se puede escribir como: 
+
+\begin{equation}
+F(\theta) = \frac{1}{2}||A\theta - b||^{2} + \lambda||\theta||^{2}
+\end{equation}
+
+El mínimo está dado por:
+
+\begin{equation}
+\begin{split}
+\mathbf{(A^{T}A + \lambda I)\theta - A^{T}b = 0}\\
+\mathbb{A}\theta - b = 0
+\end{split}
+\end{equation}
+
+donde: $\mathbb{A} \in \mathbb{R}^{7x7}, \theta \in \mathbb{R}^{7x1}, b \in \mathbb{R}^{7x1}$
+
+\begin{center}
+$\mathbf{A^{T}b} = b = \begin{bmatrix}
+\sum_{x} B_{3} \\
+\sum_{x} B_{1}(x) B_{1}(x) \\
+\sum_{x} B_{2}(x) B_{3}(x) \\
+\sum_{x} B_{1}(x) N(x)  B_{3}(x) \\
+\sum_{x} B_{2}(x) N(x)  B_{3}(x) \\	
+\sum_{x} B_{1}(x) N^{2}(x)  B_{3}(x) \\
+\sum_{x} B_{2}(x) N^{2}(x)  B_{3}(x) \\
+\end{bmatrix}$
+\end{center}
+
+$\mathbf{A^{T}A + \lambda I} = \mathbb{A} = $
+
+\begingroup\makeatletter\def\f@size{2}
+$
+\begin{bmatrix}
+N + \lambda & \sum_{i}B_{1}(x_{i})&\sum_{i}B_{2}(x_{i})&\sum_{i}B_{1}(x_{i})N(xi)&\sum_{i}B_{2}(x_{i})N(xi)&\sum_{i}B_{1}(x_{i})N^{2}(xi)&\sum_{i}B_{2}(x_{i})N^{2}(xi)\\
+\sum_{i}B_{1}(x_{i})&\sum_{i}B_{1}^{2}(x_{i}) + \lambda & \sum_{i}B_{1}(x_{i})B_{2}(x_{i})&\sum_{i}B_{1}^{2}(x_{i})N(x_{i})&\sum_{i}B_{1}(x_{i})B_{2}(x_{i})N(x_{i})&\sum_{i}B_{1}^{2}(x_{i})N^{2}(x_{i})&\sum_{i}B_{1}(x_{i})B_{2}(x_{i})N^{2}(x_{i})\\
+\sum_{i}B_{1}(x_{i})&\sum_{i}B_{1}(x_{i})B_{2}(x_{i})&\sum_{i}B_{2}^{2}(x_{i}) + \lambda&\sum{i} B_{1}(x_{i})B_{2}(x_{i})N(x_{i}) & B_{2}^{2}(x_{i})N(x_{i})&B_{1}(x_{i})B_{2}(x_{i})N^{2}(x_{i})&B_{2}^{2}(x_{i})N^{2}(x_{i})\\
+\sum_{i}B_{2}(x_{i})N(x_{i}) & \sum_{i}B_{1}^{2}(x_{i})N(x_{i})&\sum_{i} B_{1}(x_{i})B_{2}(x_{i})N(x_{i})&\sum_{i}B_{1}^{2}(x_{i})N^{2}(x_{i})+\lambda&\sum_{i}B_{1}(x_{i})B_{2}(x_{i})N^{2}(x_{i})&\sum_{i}B_{1}^{2}(x_{i})N^{3}(x_{i})&\sum_{i}B_{1}(x_{i})B_{2}(x_{i})N^{3}(x_{i})\\
+\sum_{i}B_{2}(x_{i})N(x_{i})&\sum_{i}B_{1}(x_{i})B_{2}(x_{i})N(x_{i})&\sum_{i}B_{2}^{2}(x_{i})N(x_{i})&\sum_{i}B_{1}(x_{i})B_{2}(x_{i})N^{2}(x_{i})&\sum_{i}B_{2}^{2}(x_{i})N^{2}(x_{i}) + \lambda&\sum_{i}B_{1}(x_{i})B_{2}(x_{i})N^{3}(x_{i})&\sum_{i}B_{2}^{2}(x_{i})N^{3}(x_{i})	 	
+\end{bmatrix} $\endgroup
+
+Recordemos que tendríamos una matriz por cada ventana y por cada canal, a la cual se ajusta un modelo de regresión. El número de condición de las matrices calculadas en varias secciones es grande, por lo que para un manejo adecuado de la presición se escalan todos estos en el rango de [0,1] y se realiza una suma a los elementos de la diagonal principal con los valor de $\lambda$ para obtener un mejor resultado numérco en la solución. La matriz $\mathbb{A}$ es simétrica y positiva definida, por lo que uno de los métodos apliamente usados para resolver estos sistemas lineales es mediante la factorización de \textit{Cholesky}; muy conocido por su eficiencia y la estabilidad numérica. 
+
+\comment{La descomposición Cholesky se utiliza principalmente para la solución numérica de las ecuaciones lineales $Ax = b$. Si A es simétrica y definida positiva, etnonces poemos resolver $Ax = b$ calculando primero la descomposición de Cholesky $A = LL^{T}, Ly = b$ entonces calcular la solcuión para $y$ con la solución hacia adelante, y encontrar la solución de $L^{T}x = y$ para $x$ por sustitución hacia atrás. 
+La factorización Cholesky, en el fondo, es una descomposición LU. La ventaja es que el costo de cálculo de la matriz $LL^{T}$ es menor que el de L y U. Sin embargo añadimos al procesamietno el cálculo de n raíces cuadradas para obetenr $LL^{T}$. Los elementos de la matriz $LL^{T}$ son: 
+
+\begin{equation}
+\begin{split}
+l_{ii} = \sqrt{a_{ii} - \sum_{k=1}^{i-1} (l_{ik})^{2}}\\
+l_{ij} = \frac{1}{l_{ij}}(a_{ij} - \sum_{k=1}^{i-1}l_{ik}l_{jk}), j=i+1, i+2, ..., n
+\end{split}
+\end{equation} 
+
+Una variante estrechamente relacionada a la descomposción de Cholesky clásica es la descomposción de $LDL^{T}$, donde la L es una matriz inferior unitriangular y D es una matriz diagonal. Esta descomposición está relacionada con la descomposición de Cholesky clásica, de la forma $LL^{T}$, de la siguiente manera: 
+
+\begin{center}
+$LDL^{T} = LD^{\frac{1}{2}}D^{\frac{1}{2}}L^{T} = LD^{\frac{1}{2}}(LD^{\frac{1}{2}})^{T}$
+\end{center}
+
+\begin{equation}
+\begin{split}
+d_{ij} = a_{ij} - \sum_{k=1}^{j-1}l_{jk}^{2}d_{kk}\\
+l_{ij} = (a_{ij} - \sum_{k=1}^{j-1} l_{ik}d_{kk}l_{jk})x(\frac{1}{d_{j}{j}})	
+\end{split}
+\end{equation}
+
+A partir de la descomposición $LDL^{T}$ se puede resolver el sistema y encontrar el vector de parámetros $x$ haciendo las siguientes sistutuciones hacia atrás. 
+
+Define 
+
+\begin{center}
+$A = LDL^{T}$ \\
+$\mathbf{LDL}x = b$
+\end{center}
+
+\begin{itemize}
+\item Resuelve con sustitución hacia adelante
+\begin{center}
+$Lz = b$\\
+$z = DL^{T}x$\\
+$z_{i} = b_{i} - \sum_{k=1}^{i-1}L_{ik}z_{k}, i=1,2,...,n$
+\end{center}
+\item Con $z$ resuelve
+\begin{center}
+$Dy = z$\\
+$y = L^{Tx}$\\
+$y_{i} = \frac{z_{i}}{d_{ii}}, i=1,2,...,n$
+\end{center}
+\item Finalmente con $y$ resuelve con sustitución hacia atrás para encontrar $x$
+\begin{center}
+$L^{T}x = y$\\
+$x_{i} = y_{i} - \sum_{k=1}^{i-1}L_{ki}x_{k}, i=1,2,...,n$
+\end{center}
+\end{itemize}
+
+La variante del $LDL^{T}$, si se aplican de manera eficiente, requiere el mismo espacio y la complejidad computacional para construir las matrices triangulares, \textbf{pero evita la extracción de raíces cuadradas}, muy importante para el tipo de matrices que estamos manejando. Algunas matrices indefinidas para las que no existe descomposición de Cholesky pueden tener una descomposición $LDL^{T}$ con entradas negativas en D. Por estas razones, a menudo se prefiere la descomposición de $LDL^{T}$. }
+
+Este modelo de regresión es aplicado a cada bloque de $n \times m$ pixeles en las imágenes de 500m, calculando para cada modelo $s \times l$ avance de pixeles, por lo que, para realizar el cálculo de parámetros con regresión lineal tenemos $n \times m$ datos utilizando máscaras de procesamiento, lo que puede disminuir está esta cantidad, pero evitamos el procesamiento de cajas cuyo número de datos válidos sea menor a 50. La forma de avance de los bloques implica un traslape de modelos en cada zona, los cuales son procesados eligiendo la media, el máximo o mínimo en dicha zona de traslape con la idea de tener una mejor predicción de los datos debido a la cantidad de traslapes que tenga. 
+
+Cada ventana es independiente, lo que permite ser paralelizado, logradnose con ello una gran eficiencia. 
+
+En el método de CIMAT-MODIS se observó que debido a la existencia de datos atípicos los parametros de las regresiones podríasn variar notablemente entre una ventana y otr, provocando un efecto de mosaico(pixeleo) en los píxeles de las fronteras, esto se debe a que no hay una transicion suave entre los parámetros cálculados en la regresión de una ventana ocn la contigüa por ello en ese método se calculan para cada píxel unos parámetros de interpolación mediante una regresión bicúbica de los parámetros cálculados y centrados en cada ventana. Ver el artículo \fix{reporte JUdith}
+
+\fix{Completar método hasta normalización}
+
+La normalización arriba descrita se basa en la geometría del sensor MODIS, de ocmo los píxeles de baja resolución se sobrelapan con los de alta, el usar esa normalización para el caso de VIIRS ver las figuras \fix{relación entre bandas MODIS y VIIRS}., a pesar de que mejora la correlación de las bandas no está sustentada en ningún modelo.  

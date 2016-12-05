@@ -1,0 +1,54 @@
+\ProvidesPackage{mystyle}
+
+%LENGUAJE
+\usepackage[utf8]{inputenc}
+\def\spanishoptions{mexico}
+\usepackage[spanish]{babel}
+
+%GRÁFICOS
+\usepackage{graphicx}
+\graphicspath{ {img/aux/} }
+\usepackage{tikz}
+
+
+%NOTAS Y COMENTARIOS
+%Para deshabilitar usar la opción disable
+\usepackage[backgroundcolor=white, linecolor=black]{todonotes}
+
+%CAPITULOS FANCY CHAPTER
+\usepackage[Bjornstrup]{fncychap}
+
+%MATEMÁTICAS
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\numberwithin{equation}{chapter}
+
+\renewcommand{\qedsymbol}{Q.E.D.}
+\newtheorem{theorem}{Teorema}[chapter]
+\newtheorem{proposition}{Proposición}[chapter]
+\newtheorem{lemma}{Lema}[chapter]
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[chapter]
+\newtheorem{claim}{Afirmación}[chapter]
+\newtheorem{example}{Ejemplo}[chapter]
+
+%BIBLIOGRAFÍA
+\usepackage{cite}
+%\usepackage[nottoc,numbib]{tocbibind}
+
+%LINKS Y REFERENCIAS
+%Poner al final
+\usepackage{hyperref}
+
+%Para el espacio entre los párrafos
+\usepackage{parskip}
+
+%Para poner en negritas
+\usepackage[font=footnotesize,bf]{caption}
+
+\long\def\comment#1{}  										% para comentar bloques
+\long\def\fix#1{***Begin FIX--- {\bf #1 } ---end FIX***}   	% para indicar donde hacer correciones
