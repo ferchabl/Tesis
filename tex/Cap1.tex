@@ -10,6 +10,8 @@ A pesar de no ser los más idóneos, los datos AVHRR tuvieron resultados suficie
 
 Dentro del proyecto EOS sobresale el sensor llamado espectroradiómetro para imágenes de resolución moderado, o MODIS, por sus siglas en inglés, el cual fue creado por un equipo científico interdisciplinario. Este sensor está abordo de las plataformas Terra y Aqua. Sus datos cuentan con alta sensibilidad radiométrica, buena calidad geométrica, alta resolución temporal y son distribuidos de manera gratuita a través de diferentes portales de internet. Los datos crudos pueden obtenerse de manera directa contando con la tecnología necesaria; en México se cuenta con una antena y un equipo de trabajo de procesamiento y distribución dentro de la CONABIO (Comisión Nacional para el Conocimiento y Uso de la Biodiversidad). 
 
+El sensor MODIS por sus características espaciales y espectrales es uno de los más importantes para el monitoreo de los procesos de cambio en la tierra. Cuenta con una alta sensibilidad radiométrica (12 bits y 16 bits) en 36 bandas espectrales, en un rango de longitud de onda que va de los $0,4 \mu m$ a los $14,4 \mu m$. Las primeras 19 bandas están posicionadas en la región del espectro electromagnético situado entre $0, 405 nm$ y $2, 144 nm$. Las bandas de la 1 a la 7 son útiles para las aplicaciones terrestres; las bandas 8 a la 16 para las observaciones oceánicas y las bandas 17 a la 19 para las mediciones atmosféricas. Las bandas 20 a la 36 cubren la porción del infrarrojo térmico del espectro de ($3, 600 -  14, 385 nm$). Dos bandas son tomadas a un resolución nominal de 250m \textit{at nadir}, cinco bandas a 500m \textit{at nadir} y las 29 restantes a 1km. MODIS posee una alta calidad geométrica que permite el monitoreo preciso de las alteraciones de la superficie terrestre. El equipo científico de MODIS Land (MODLAND) desarrolla métodos y algoritmos para generar productos sobre cubiertas terrestres.
+
 Las experiencias derivadas de los trabajos con el sensor MODIS han permitido explorar una gran cantidad de aplicaciones potenciales que, al alcanzar el fin de sus operaciones, buscan ser aplicadas a la siguiente etapa de observación de la tierra a través del sensor VIIRS.
 
 El sensor VIIRS, por sus siglas en inglés Visible Infrared Imager Radiomer Suite, programado para volar en los satélites del proyecto National Polar-orbiting  Operational Environmental Satellite System (NPOESS), fue lanzado por primera vez el 28 de Octubre del 2011 a bordo del Satélite Soumi-NPP. Busca reemplazar y combinar las misiones de los sensores Advanced Very High Resolution Radiometer (AVHRR) y Operational Linescan System (OLS). Actualmente, imágenes de ambos sensores (AVHRR y OLS) tienen una serie de características que limitan su uso  en las operaciones de pronóstico, comparadas con imágenes provenientes de satélites geostacionarios. 
@@ -98,13 +100,19 @@ SOUB - Escalonada fuera de límites / solución no dentro del rando permitido & 
 \end{table}
 
 
-En el sensor VIIRS, el registro de las bandas se produce de forma simple debido a que las bandas I y M están alineadas, lo que significa que los marcos de resolución \textit{moderate} cubren casi la misma cobertura de superficie terrestre que dos marcos de resolución \textit{Imagery}. En conclusión VIIRS fue diseñado para colocar 2x2 pixeles de banda I dentro de un pixel de banda M. Como se muestra en la figura \ref{bandas_relation}. Esto no ocurría en los píxeles del sensor predecesor(MODIS),en el cual, un pixel de baja resolución (banda M) se sobrelapa sobre una región de 2x3 píxeles de la banda de alta rosolución (banda I) como se muestra en la figura \fix{realizar la figura relación entre banas modis}, haciendo más complejo el proceso de fusión. 
+En el sensor VIIRS, el registro de las bandas se produce de forma simple debido a que las bandas I y M están alineadas, lo que significa que los marcos de resolución \textit{moderate} cubren casi la misma cobertura de superficie terrestre que dos marcos de resolución \textit{Imagery}. En conclusión VIIRS fue diseñado para colocar 2x2 pixeles de banda I dentro de un pixel de banda M, tal como se muestra en la figura \ref{bandas_viirs}. Esto no ocurría en los píxeles del sensor predecesor(MODIS),en el cual, un pixel de baja resolución (banda M) se sobrelapa sobre una región de 2x3 píxeles de la banda de alta rosolución (banda I) como se muestra en la figura \ref{bandas_viirs}.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=.4]{bandas.png}
+\caption{Relación entre bandas del sensor VIIRS.} \label{bandas_viirs}
+\end{figure}
 
 \begin{figure}[ht!]
 
 \centering
-\includegraphics[scale=.4]{bandas.png}
-\caption{Relación entre bandas del sensor VIIRS.} \label{bandas_relation}
+\includegraphics[scale=.4]{bandas_modis.png}
+\caption{Relación entre bandas del sensor MODIS.} \label{bandas_modis}
 \end{figure}
 
 \subsection{¿Quién hace uso de las imágenes VIIRS en México?}
@@ -117,21 +125,18 @@ La Conabio obtiene imágenes de satelitales del territorio nacional en alta reso
 
 Ambas instancias trabajaron en conjunto en el programa Fusión y Análisis de Imágenes Satelitales de Sensores MODIS y VIIRS para mejorar el procesamiento de las fotografías que muestran a detalle la biodiversidad del país, a fin de detectar el deterioro o mejoramiento de los ecosistemas y mares. 
 
-Por medio de la antena que se ubica en las instalacioens de la CONABIO se captan las señales de los satélites Aqua, Terra y Suomi NPP de la NASA, a través de los sensores MODIS y VIIRS. Una vez que se obtienen, son procesadas en el software creado en los laboratorios de CIMAT (el cual pertenece al Sistema de Centros Públicos de Investigación del Consejo Nacional de Ciencia y Tecnología (Conacyt) ), a fin de mejorar la resolución de las bandas M \fix{(baja reslución).} 
+Por medio de la antena que se ubica en las instalacioens de la CONABIO se captan las señales de los satélites Aqua, Terra y Suomi NPP de la NASA, a través de los sensores MODIS y VIIRS. Una vez que se obtienen, son procesadas en el software creado en los laboratorios de CIMAT (el cual pertenece al Sistema de Centros Públicos de Investigación del Consejo Nacional de Ciencia y Tecnología (Conacyt) ), a fin de mejorar la resolución de las bandas de baja resolución (M).
 
-\fix{Falta poner un poco más del trabajo que realiza la CONABIO}
+Entre los proyectos realizados por la CONABIO se ecuentra el proyecto "Sistema de alerta temprana de incendios forestales con datos satelitales", el cual es un sistema que utiliza imágenes de tipo MODIS y VIIRS para generar información en forma operacional para la atención de incendios forestales. Su principal objetivo es la detección de incendios forestales a partir de imágenes de satélites diarias. La información generada se publica en la página web de la CONABIO. 
 
-\section{Algoritmo CIMAT-CONBIO para fusión y análisis de imágenes de los sensores MODIS y VIIRS}
+\comment{Algoritmo CIMAT-CONBIO para fusión y análisis de imágenes de los sensores MODIS y VIIRS}
+\section{Algoritmo CIMAT-CONABIO}
 
-A continuación describiremos el método de fusuión desarrollado entre el CIMAT y la CONABIO para imágenes MODIS \fix{referencia trabajo Judith}, dicho método es una mejora a la propuesta original de Trishenko \fix{referencia Trish}.
+A continuación describiremos el método de fusuión desarrollado entre el CIMAT y la CONABIO para imágenes MODIS \cite{Judith}, dicho método es una mejora a la propuesta original de Trishenko \cite{Trish}.
 
-En este proyecto se trabajo con imágenes del sensor MODIS. Aunque como se verá más delante, su uso se ha extendido a imágenes VIIRS. Lo apropiado de este procedimiento (diseñado para imágenes MODIS) para imágenes VIIRS se discutirá al final de esta sección. 
+En este proyecto se trabajÓ con imágenes del sensor MODIS. Aunque como se verá más delante, su uso se extendidó a imágenes VIIRS. Lo apropiado de este procedimiento (diseñado para imágenes MODIS) para imágenes VIIRS se discutirá al final de esta sección. 
 
-El sensor llamado Espectroradiómetro para imágenes de resolución moderada (MODIS, por sus siglas en inglés) es un sensor que sobresale del proyecto EOS, de la Nasa; está abordo de las plataformas Terra y Aqua, que por sus características espaciales y espectrales es uno de los más importantes para el monitoreo de los procesos de cambio en la tierra. El equipo científico de MODIS Land (MODLAND) desarrolla métodos y algoritmos para generar productos sobre cubiertas terrestres. Sus datos cuentan con una alta sensibilidad radiométrica, buena calidad geométrica y alta resolución temporal. 
-
-El sensor MODIS cuenta con una alta sensibilidad radiométrica (12 bits y 16 bits) en 36 bandas espectrales, en un rango de longitud de onda que va de los $0,4 \mu m$ a los $14,4 \mu m$. Las primeras 19 bandas están posicionadas en la región del espectro electromagnético situado entre $0, 405 nm$ y $2, 144 nm$. Las bandas de la 1 a la 7 son útiles para las aplicaciones terrestres; las bandas 8 a la 16 para las observaciones oceánicas y las bandas 17 a la 19 para las mediciones atmosféricas. Las bandas 20 a la 36 cubren la porción del infrarrojo térmico del espectro de ($3, 600 -  14, 385 nm$). Dos bandas son tomadas a un resolución nominal de 250m \textit{at nadir}, cinco bandas a 500m \textit{at nadir} y las 29 restantes a 1km. MODIS posee una alta calidad geométrica que permite el monitoreo preciso de las alteraciones de la superficie terrestre. 
-
-Se sabe que existe alta correlacón entre las bandas de alta y baja resolución del sensor MODIS. Las bandas B3, B4, B6 y B7 tienen un alto grado de correlación lineal con la banda B1, mientras que la banda B6 tiene un grado menor de correlación con B2. Entonces las bandas B1, B2 y NDVI (Índice de vegetación normalizado) contribuyen como componentes básicos en la construcción de los otros canales. Los canales B3, B4, B6 y B7 muestran correlación negativa con NDVI y el canal B7 muestra una relación no lineal con NDVI.
+Se sabe que existe alta correlación entre las bandas de alta y baja resolución del sensor MODIS. Las bandas B3, B4, B6 y B7 tienen un alto grado de correlación lineal con la banda B1, mientras que la banda B6 tiene un grado menor de correlación con B2. Entonces las bandas B1, B2 y NDVI (Índice de vegetación normalizado) contribuyen como componentes básicos en la construcción de los otros canales. Los canales B3, B4, B6 y B7 muestran correlación negativa con NDVI y el canal B7 muestra una relación no lineal con NDVI.
 
 Trischenko propone el procesamiento de las imágenes MODIS haciendo una división en pequeños bloques y generando una regresión no lineal de cada una de las bandas  $B_{3}$ a $B_{7}$ a partir de las bandas $B_{1}, B_{2}$ y NVDI. 
 
@@ -144,10 +149,12 @@ G(B_{1}(x), B_{2}(x),a) = B_{n}(x) = a_{0} + (a_{1}B_{1}(x) + a_{2}B_{2}(x))(1 +
 Donde 
 
 \begin{equation}
-N(x) =  \frac{B_{2}(2)-B_{1}(x)}{B_{2}(x) + B_{1}(x)}.
+N(x) =  \frac{B_{2}(2)-B_{1}(x)}{B_{2}(x) + B_{1}(x)}
 \end{equation}
 
-El propósito es encontrar los parámetros del modelo de regresión $B_{n}(x) = G(B_{1}(x), B_{2}(x), a)$ para estimar $B_{1}(x)$ a $B_{7}(x)$, donde G es una función paramétrica, $x$ un punto en $\mathbb{R}^{2}$, $N(x)$ es el índice normalizado de vegetación (NDVI) y $a$ un vector de parámetros que pretende minimizar el siguiente problema de mínimos cuadrados no lineales: 
+define el índice vegetación normalizado o NDVI.
+
+El propósito es encontrar los parámetros del modelo de regresión $B_{n}(x) = G(B_{1}(x), B_{2}(x), a)$ para estimar $B_{1}(x)$ a $B_{7}(x)$, donde G es una función paramétrica, $x$ un punto en $\mathbb{R}^{2}$ y $a$ un vector de parámetros que pretende minimizar el siguiente problema de mínimos cuadrados no lineales: 
 
 \begin{equation}
 \mathop{m\acute{i}n}_{a} F(a) = \sum_{i=1}^{m} [y_{i} - G(B_{1}(x_{i}), B_{2}(x_{i}),a)]^{2}
@@ -183,34 +190,66 @@ J_{i}(a) =
 \end{equation}
 }
 
-La regresión se calcularía para todos los datos de una imágen, lo cual tendría una baja presición porque las características espaciales van cambiando conforme cambian las coberturas, por lo que, el modelo se implementa por ventanas, es decir en cada ventana se cácula una regresión. Esto permite que el modelo se comporte como si se adaptara espacialmente. Si las ventanas son muy pequeñas la regresiones pueden calcular mejor las características locales de las imágenes. Sin  embargo, dado a que se trabaja con imágenes de gran tamaño, se deben resolver cientos de miles de sistemas, por lo que una de las formas propuestas para reducir el tiempo computacional es trasladar el problema de mínimos cuadrados no lineales a uno de mínimos cuadrados lineales y resolverlo mediante una descomposición de Cholesky . Definimos $N(x) = NVDI(x)$, tomando la ecuación \ref{tris_eq} y desarrollando los múltiplos de dicha ecuación tenemos que:
+La regresión se calcularía para todos los datos de una imagen, lo cual tendría una baja precisión porque las características espaciales van cambiando conforme cambian las coberturas, por lo que, el modelo se implementa por ventanas, es decir en cada ventana se calcula una regresión. Esto permite que el modelo se comporte como si se adaptara espacialmente. Si las ventanas son muy pequeñas la regresiones pueden capturar mejor las características locales de las imágenes. Sin  embargo, dado a que se trabaja con imágenes de gran tamaño, se deben resolver cientos de miles de sistemas, por lo que una de las formas propuestas para reducir el tiempo computacional es trasladar el problema de mínimos cuadrados no lineales a uno de mínimos cuadrados lineales y resolverlo mediante una descomposición de Cholesky. Tomando la ecuación \ref{tris_eq} y desarrollando los múltiplos de dicha ecuación tenemos que:
 
-\begin{equation}
-\begin{split}
-B_{n}(x) = a_{0} + (a_{1}B_{1}(x) + a_{2}B_{2}(x))(1 + a_{3}NVDI(x) + a_{4}NVDI(x)^{2})\\
-B_{n}(x) = a_{0} + a_{1}B_{1}(x) + a_{2}B_{2}(x) + a_{1}a_{3}B_{1}(x)N(x) + a_{2}a_{3}B_{2}\\(x)N(x) + a_{1}a_{4}B_{1}(x)N^{2}(x) + a_{2}a_{4}B_{2}(x)N^{2}(x)\\
-\mathbf{B_{n}(x) =  \theta_{0} + \theta_{1}B_{1}(x) + \theta_{2}B_{2}(x) + \theta_{3}B_{1}(x)N(x) + \theta_{4}B_{2}(x)N(x) + \theta_{5}B_{1}N^{2}(x)}\\
-\mathbf{ + \theta_{6}B_{2}(x)N^{2}(x)} 
-\end{split}
-\end{equation}
+\begin{multline}
+B_{n}(x) = a_{0} + (a_{1}B_{1}(x) + a_{2}B_{2}(x))(1 + a_{3}NVDI(x) + a_{4}NVDI(x)^{2}) \\
+B_{n}(x) = a_{0} + a_{1}B_{1}(x) + a_{2}B_{2}(x) + a_{1}a_{3}B_{1}(x)N(x) + a_{2}a_{3}B_{2}(x)N(x) \\
+ + a_{1}a_{4}B_{1}(x)N^{2}(x) + a_{2}a_{4}B_{2}(x)N^{2}(x) \\
+\mathbf{B_{n}(x) =  \theta_{0} + \theta_{1}B_{1}(x) + \theta_{2}B_{2}(x) + \theta_{3}B_{1}(x)N(x) + \theta_{4}B_{2}(x)N(x)} \\
+\mathbf{ + \theta_{5}B_{1}N^{2}(x) + \theta_{6}B_{2}(x)N^{2}(x)} \\ 
+\end{multline}
 
 \textit{Ahora tenemos un modelo de regresión con parámetros lineales y en lugar de estimar cinco parámetros en el modelo no lineal, estimaremos siete parámetros en el modelo lineal.}
 
-Podemos entonces trasladar el problema de regresión como un problema de minimización cuadrática donde la función a minimizar está dado por: 
+Podemos entonces transformar el problema de regresión a un problema de minímos cuadrados lienales:  
+
+\begin{multline}
+\begin{aligned}
+\mathop{m\acute{i}n}_{\theta} F (\theta)  = \sum_{i=1}^{m} (y_{i} - B_{n}(\theta, x_{i}))^{2} = \frac{1}{2} ||A\theta - b||^{2} \\ \\
+\end{aligned}
+\end{multline}
+
+Donde: 
+
+\begin{eqnarray}
+\begin{aligned}
+A & =
+\left[\begin{matrix}
+ 1 & B_{1}(x_{0}) & B_{2}(x_0) & B_{1}(x_{0})N(x_{0})\\
+ 1 & B_{1}(x_{1}) & B_{2}(x_1) & B_{1}(x_{1})N(x_{1}){1})\\
+ \vdots & \vdots & \vdots & \vdots \\
+ 1 & B_{1}(x_{n-1}) & B_{2}(x_{n-1}) & B_{1}(x_{n-1})N(x_{n-1})
+\end{matrix}\right.\\ \\
+&\qquad\qquad
+\left.\begin{matrix}
+ B_{2}(x_{0})N(x_{0}) & B_{1}(x_{0})N^{2}(x_{0}) & B_{2}(x_{0})N^{2}(x_{0}) \\
+ B_{2}(x_{1})N(x_{1}) & B_{1}(x_{1})N^{2}(x_{1}) & B_{2}(x_{1})N^{2}(x_{1}) \\
+ \vdots & \vdots & \vdots\\
+ B_{2}(x_{n-1})N(x_{n-1}) & B_{1}(x_{n-1})N^{2}(x_{n-1}) & B_{2}(x_{n-1})N^{2}(x_{n-1}) \nonumber 
+\end{matrix}\right]
+\end{aligned}
+\end{eqnarray}
 
 \begin{equation}
-\begin{split}
-F (\theta) = \frac{1}{2}\sum_{i=1}^{m} (f(\theta))^{2} = \sum_{i=1}^{m} (y_{i} - B_{n}(\theta, x_{i}))^{2} = \frac{1}{2} ||A\theta - b||^{2}\\
-\mathbf{A\theta - b} = \begin{bmatrix}
-1 & B_{1}(x_{0}) & B_{2}(x_0) & B_{1}(x_{0})N(x_{0}) & B_{2}(x_{0})N(x_{0}) & B_{1}(x_{0})N^{2}(x_{0}) & B_{2}(x_{0})N^{2}(x_{0}) \\
-1 & B_{1}(x_{1}) & B_{2}(x_1) & B_{1}(x_{1})N(x_{1}) & B_{2}(x_{1})N(x_{1}) & B_{1}(x_{1})N^{2}(x_{1}) & B_{2}(x_{1})N^{2}(x_{1}) \\
-\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots\\
-1 & B_{1}(x_{n-1}) & B_{2}(x_{n-1}) & B_{1}(x_{n-1})N(x_{n-1}) & B_{2}(x_{n-1})N(x_{n-1}) & B_{1}(x_{n-1})N^{2}(x_{n-1}) & B_{2}(x_{n-1})N^{2}(x_{n-1})
+\theta = 
+\begin{bmatrix}
+\theta_{0} \\
+\theta_{1} \\
+\vdots \\
+\theta_{6}
 \end{bmatrix}
-\end{split}
+\qquad \qquad \qquad
+b = 
+\begin{bmatrix}
+B_{n}(x_{o})\\
+B_{n}(x_{1})\\
+\vdots\\
+B_{n}(x_{6}) \nonumber
+\end{bmatrix}
 \end{equation}
 
-La matriz $\mathbf{A^{T}A}$ puede tener columnas linealmente dependientes por perdida de datos o porque algunas de las componentes sea 0 (numéricamente), entonces la matriz $A^{T}A$ no será de rango completo. Por lo que se agrega un potencial cuadrático que penaliza la norma del vector de parámetros. A esto se le conoce como regresión Ridge. Con esto se garantiza la existencia de una solución única. La función objetivo en forma matricial se puede escribir como: 
+La solución de mínimos cuadrados se obtiene resolvindo el sistema $(AA^{T})\theta = A^{T}b$. La matriz $A^{T}A$ puede tener columnas linealmente dependientes por pérdida de datos o porque algunas de las componentes sean 0 o estar mal condicionada, entonces la matriz $A^{T}A$ no será de rango completo. Por lo que se agrega un potencial cuadrático que penaliza la norma del vector de parámetros. A esto se le conoce como regresión Ridge. Con esto se garantiza la existencia de una solución única. La función objetivo en forma matricial se puede escribir como: 
 
 \begin{equation}
 F(\theta) = \frac{1}{2}||A\theta - b||^{2} + \lambda||\theta||^{2}
@@ -241,17 +280,36 @@ $\mathbf{A^{T}b} = b = \begin{bmatrix}
 
 $\mathbf{A^{T}A + \lambda I} = \mathbb{A} = $
 
-\begingroup\makeatletter\def\f@size{2}
-$
-\begin{bmatrix}
-N + \lambda & \sum_{i}B_{1}(x_{i})&\sum_{i}B_{2}(x_{i})&\sum_{i}B_{1}(x_{i})N(xi)&\sum_{i}B_{2}(x_{i})N(xi)&\sum_{i}B_{1}(x_{i})N^{2}(xi)&\sum_{i}B_{2}(x_{i})N^{2}(xi)\\
-\sum_{i}B_{1}(x_{i})&\sum_{i}B_{1}^{2}(x_{i}) + \lambda & \sum_{i}B_{1}(x_{i})B_{2}(x_{i})&\sum_{i}B_{1}^{2}(x_{i})N(x_{i})&\sum_{i}B_{1}(x_{i})B_{2}(x_{i})N(x_{i})&\sum_{i}B_{1}^{2}(x_{i})N^{2}(x_{i})&\sum_{i}B_{1}(x_{i})B_{2}(x_{i})N^{2}(x_{i})\\
-\sum_{i}B_{1}(x_{i})&\sum_{i}B_{1}(x_{i})B_{2}(x_{i})&\sum_{i}B_{2}^{2}(x_{i}) + \lambda&\sum{i} B_{1}(x_{i})B_{2}(x_{i})N(x_{i}) & B_{2}^{2}(x_{i})N(x_{i})&B_{1}(x_{i})B_{2}(x_{i})N^{2}(x_{i})&B_{2}^{2}(x_{i})N^{2}(x_{i})\\
-\sum_{i}B_{2}(x_{i})N(x_{i}) & \sum_{i}B_{1}^{2}(x_{i})N(x_{i})&\sum_{i} B_{1}(x_{i})B_{2}(x_{i})N(x_{i})&\sum_{i}B_{1}^{2}(x_{i})N^{2}(x_{i})+\lambda&\sum_{i}B_{1}(x_{i})B_{2}(x_{i})N^{2}(x_{i})&\sum_{i}B_{1}^{2}(x_{i})N^{3}(x_{i})&\sum_{i}B_{1}(x_{i})B_{2}(x_{i})N^{3}(x_{i})\\
-\sum_{i}B_{2}(x_{i})N(x_{i})&\sum_{i}B_{1}(x_{i})B_{2}(x_{i})N(x_{i})&\sum_{i}B_{2}^{2}(x_{i})N(x_{i})&\sum_{i}B_{1}(x_{i})B_{2}(x_{i})N^{2}(x_{i})&\sum_{i}B_{2}^{2}(x_{i})N^{2}(x_{i}) + \lambda&\sum_{i}B_{1}(x_{i})B_{2}(x_{i})N^{3}(x_{i})&\sum_{i}B_{2}^{2}(x_{i})N^{3}(x_{i})	 	
-\end{bmatrix} $\endgroup
+\tiny
+\begin{eqnarray}
+\begin{aligned}
+&
+\left[\begin{matrix}
+N + \lambda & \sum_{i}B_{1}(x_{i}) & \sum_{i}B_{2}(x_{i}) & \sum_{i}B_{1}(x_{i})N(xi) \\
+\sum_{i}B_{2}(x_{i}) & \sum_{i}B_{1}^{2}(x_{i}) + \lambda & \sum_{i}B_{1}(x_{i})B_{2}(x_{i}) &\sum_{i}B_{1}^{2}(x_{i})N(x_{i}) \\
+\sum_{i}B_{2}(x_{i}) & \sum_{i}B_{1}(x_{i})B_{2}(x_{i}) & \sum_{i}B_{2}^{2}(x_{i}) + \lambda & \sum_{i} B_{1}(x_{i})B_{2}(x_{i})N(x_{i}) \\
+\sum_{i}B_{1}(x_{i})N(x_{i}) & \sum_{i}B_{1}^{2}(x_{i})N(x_{i}) & \sum_{i} B_{1}(x_{i})B_{2}(x_{i})N(x_{i}) & \sum_{i}B_{1}^{2}(x_{i})N^{2}(x_{i})+\lambda \\
+\sum_{i}B_{2}(x_{i})N(x_{i}) & \sum_{i}B_{1}(x_{i})B_{2}(x_{i})N(x_{i})&\sum_{i}B_{2}^{2}(x_{i})N(x_{i}) & \sum_{i}B_{1}(x_{i})B_{2}(x_{i})N^{2}(x_{i})\\
+\sum_{i}B_{1}(x_{i})N^{2}(x_{i}) & \sum_{i}B_{1}^{2}(x_{i})N^{2}(x_{i}) & \sum_{i}B_{1}(x_{i})B_{2}(x_{i})N^{2}(x_{i}) & \sum_{i}B_{1}^{2}(x_{i})N^{3}(x_{i})\\
+\sum_{i}B_{2}(x_{i})N^{2}(x_{i}) & \sum_{i}B_{1}(x_{i})B_{2}(x_{i})N^{2}(x_{i}) & \sum_{i}B_{2}^{2}(x_{i})N^{2}(x_{i}) & \sum_{i}B_{1}(x_{i})B_{2}(x_{i})N^{3}(x_{i})
+\end{matrix} \right.\\ \\
+&\qquad\qquad
+\left.
+\begin{matrix}
+\sum_{i}B_{2}(x_{i})N(xi) & \sum_{i}B_{1}(x_{i})N^{2}(xi) & \sum_{i}B_{2}(x_{i})N^{2}(xi)\\
+\sum_{i}B_{1}(x_{i})B_{2}(x_{i})N(x_{i}) & \sum_{i}B_{1}^{2}(x_{i})N^{2}(x_{i}) & \sum_{i}B_{1}(x_{i})B_{2}(x_{i})N^{2}(x_{i})\\
+\sum_{i}B_{2}^{2}(x_{i})N(x_{i}) & \sum_{i}B_{1}(x_{i})B_{2}(x_{i})N^{2}(x_{i}) & \sum_{i}B_{2}^{2}(x_{i})N^{2}(x_{i})\\
+\sum_{i}B_{1}(x_{i})B_{2}(x_{i})N^{2}(x_{i}) & \sum_{i}B_{1}^{2}(x_{i})N^{3}(x_{i}) & \sum_{i}B_{1}(x_{i})B_{2}(x_{i})N^{3}(x_{i})\\ 
+\sum_{i}B_{2}^{2}(x_{i})N^{2}(x_{i}) + \lambda & \sum_{i}B_{1}(x_{i})B_{2}(x_{i})N^{3}(x_{i})&\sum_{i}B_{2}^{2}(x_{i})N^{3}(x_{i}) \\
+\sum_{i}B_{1}(x_{i})B_{2}(x_{i})N^{3}(x_{i}) & \sum_{i}B_{1}^{2}(x_{i})N^{4}(x_{i}) + \lambda & \sum_{i}B_{1}(x_{i})B_{2}(x_{i})N^4(x_{i}) \\
+\sum_{i}B_{2}^{2}(x_{i})N^{3}(x_{i}) & \sum_{i}B_{1}(x_{i})B_{2}(x_{i})N^{4}(x_{i}) & \sum_{i}B_{2}^{2}(x_{i})N^{4}(x_{i}) + \lambda
+\nonumber
+\end{matrix} \right]
+\end{aligned}
+\end{eqnarray}
+\normalsize
 
-Recordemos que tendríamos una matriz por cada ventana y por cada canal, a la cual se ajusta un modelo de regresión. El número de condición de las matrices calculadas en varias secciones es grande, por lo que para un manejo adecuado de la presición se escalan todos estos en el rango de [0,1] y se realiza una suma a los elementos de la diagonal principal con los valor de $\lambda$ para obtener un mejor resultado numérco en la solución. La matriz $\mathbb{A}$ es simétrica y positiva definida, por lo que uno de los métodos apliamente usados para resolver estos sistemas lineales es mediante la factorización de \textit{Cholesky}; muy conocido por su eficiencia y la estabilidad numérica. 
+Recordemos que tendríamos una matriz por cada ventana y por cada canal, a la cual se ajusta un modelo de regresión. El número de condición de las matrices calculadas en varias secciones es grande, por lo que para un manejo adecuado de la precisión se escalan todos estos en el rango de [0,1] y se realiza una suma a los elementos de la diagonal principal con los valor de $\lambda$ para obtener un mejor resultado numérico en la solución. La matriz $\mathbb{A}$ es simétrica y positiva definida, por lo que uno de los métodos ampliamente usados para resolver estos sistemas lineales es mediante la factorización de \textit{Cholesky}; muy conocido por su eficiencia y la estabilidad numérica. 
 
 \comment{La descomposición Cholesky se utiliza principalmente para la solución numérica de las ecuaciones lineales $Ax = b$. Si A es simétrica y definida positiva, etnonces poemos resolver $Ax = b$ calculando primero la descomposición de Cholesky $A = LL^{T}, Ly = b$ entonces calcular la solcuión para $y$ con la solución hacia adelante, y encontrar la solución de $L^{T}x = y$ para $x$ por sustitución hacia atrás. 
 La factorización Cholesky, en el fondo, es una descomposición LU. La ventaja es que el costo de cálculo de la matriz $LL^{T}$ es menor que el de L y U. Sin embargo añadimos al procesamietno el cálculo de n raíces cuadradas para obetenr $LL^{T}$. Los elementos de la matriz $LL^{T}$ son: 
@@ -305,14 +363,39 @@ $x_{i} = y_{i} - \sum_{k=1}^{i-1}L_{ki}x_{k}, i=1,2,...,n$
 \end{center}
 \end{itemize}
 
-La variante del $LDL^{T}$, si se aplican de manera eficiente, requiere el mismo espacio y la complejidad computacional para construir las matrices triangulares, \textbf{pero evita la extracción de raíces cuadradas}, muy importante para el tipo de matrices que estamos manejando. Algunas matrices indefinidas para las que no existe descomposición de Cholesky pueden tener una descomposición $LDL^{T}$ con entradas negativas en D. Por estas razones, a menudo se prefiere la descomposición de $LDL^{T}$. }
+La variante del $LDL^{T}$, si se aplican de manera eficiente, requiere el mismo espacio y la complejidad computacional para construir las matrices triangulares, \textbf{pero evita la extracción de raíces cuadradas}, muy importante para el tipo de matrices que estamos manejando. Algunas matrices indefinidas para las que no existe descomposición de Cholesky pueden tener una descomposición $LDL^{T}$ con entradas negativas en D. Por estas razones, a menudo se prefiere la descomposición de $LDL^{T}$. }%Fin de lo comentado
 
-Este modelo de regresión es aplicado a cada bloque de $n \times m$ pixeles en las imágenes de 500m, calculando para cada modelo $s \times l$ avance de pixeles, por lo que, para realizar el cálculo de parámetros con regresión lineal tenemos $n \times m$ datos utilizando máscaras de procesamiento, lo que puede disminuir está esta cantidad, pero evitamos el procesamiento de cajas cuyo número de datos válidos sea menor a 50. La forma de avance de los bloques implica un traslape de modelos en cada zona, los cuales son procesados eligiendo la media, el máximo o mínimo en dicha zona de traslape con la idea de tener una mejor predicción de los datos debido a la cantidad de traslapes que tenga. 
+Este modelo de regresión es aplicado a cada bloque de $n \times m$ pixeles en las imágenes de 500m. A todos los pixeles del bloque se le asignan los mismo parámetros. La forma de avance de los bloques puede implicar un traslape de modelos en cada zona. Los parámetros en la zona de traslapes pueden ser eligidos a través de un estimador como la media.
 
-Cada ventana es independiente, lo que permite ser paralelizado, logradnose con ello una gran eficiencia. 
+Cada ventana es independiente, lo que permite ser paralelizado, lograndose con ello una gran eficiencia. 
 
-En el método de CIMAT-MODIS se observó que debido a la existencia de datos atípicos los parametros de las regresiones podríasn variar notablemente entre una ventana y otr, provocando un efecto de mosaico(pixeleo) en los píxeles de las fronteras, esto se debe a que no hay una transicion suave entre los parámetros cálculados en la regresión de una ventana ocn la contigüa por ello en ese método se calculan para cada píxel unos parámetros de interpolación mediante una regresión bicúbica de los parámetros cálculados y centrados en cada ventana. Ver el artículo \fix{reporte JUdith}
+En el método de CIMAT-CONABIO se observó que debido a la existencia de datos atípicos los parámetros de las regresiones podrían variar notablemente entre una ventana y otra, provocando un efecto de mosaico(pixeleo) en los píxeles de las fronteras, esto se debe a que no hay una transición suave entre los parámetros cálculados en la regresión de una ventana con la contigua. Otra estrategia (en vez de ventanas traslapadas) es asignar los parámetros calculados sólo a los pixeles centrales de cada ventana y calcular los demás parámetros mediante interpolación bicubica. Ver el artículo de la referencia \cite{Judith}.
 
-\fix{Completar método hasta normalización}
+A pesar de la interpolación de los parámetros en los datos, existen datos que por su naturaleza están fuera de los rangos establecidos en las bandas, esto se debe a que fueron estimados incorrectamente durante el proceso de regresión o incluso fueron erróneamente aquiridos de por el sensor. Por ello se aplica el  proceso de eliminación de datos atípicos, que serán los datos que se encuentren fuera de un rango previamente establecido. Para corregir aquellos datos fuera del intervalo aplicamos la máscara (M ocho conectado) a los datos atípicos para sustituir dichos valores por un promedio pesado de los vecinos: 
 
-La normalización arriba descrita se basa en la geometría del sensor MODIS, de ocmo los píxeles de baja resolución se sobrelapan con los de alta, el usar esa normalización para el caso de VIIRS ver las figuras \fix{relación entre bandas MODIS y VIIRS}., a pesar de que mejora la correlación de las bandas no está sustentada en ningún modelo.  
+\begin{eqnarray}
+\label{filtro}
+\begin{aligned}
+M  & = \frac{1}{2} \begin{bmatrix}
+1 & 2 & 1\\
+2 & 0 & 2\\
+1 & 2 & 1
+\end{bmatrix}\\ \\ \nonumber
+x_{new} & = \sum_{k=-1}^{1}\sum_{l=-1}^{1}M_{k+1l+1} * x_{i+k, j+l}
+\end{aligned}
+\end{eqnarray}
+
+En el caso particular de MODIS, para preservar la consistencia  radiómetrica, el paso final involucra un proceso de normalización para asegurarse de que el resultado es consistente en comparación con la banda de baja resolución original MODIS a 500m \textit{at nadir} y VIIRS a 375m \textit{at nadir}. Se debe realizar con un promedio ponderado de un grupo de $3  \times 2$ pixeles de 250m con pesos de 0.25 para los dos pixeles de los bordes y 0.5 para el pixel central [0.25 0.5 0.5]. Se observó que el proceso originalmente propuesto por Trishchenko era inconsistente y tenía múltiples soluciones, por lo que el algoritmo CIMAT-CONANIO propone realizar la normalización mediante la minimización del siguiente problema de optimización: 
+
+\small
+\begin{eqnarray}
+\begin{aligned}
+& \mathop{m\acute{i}n}_{a} F(a) = \frac{1}{2}||Da - m||^{2} + \frac{1}{2}\lambda ||a-1||^{2} \nonumber \\ 
+& \mathop{m\acute{i}n}_{a} \frac{1}{2}[2\rho_{1}a_{1} + \rho_{1}a_{2} - 3r_{1}]^{2} + \frac{1}{2}\sum_{k=2}{n}[\rho_{2k-2}a_{2k-2}+2\rho_{2k-1}a_{2k-1}+\rho_{2k}a_{2k}-2r_{k}]^{2} \nonumber 
+\end{aligned}
+\end{eqnarray} 
+\normalsize
+
+Donde $\rho_{i}$ es el promedio de la reflactancia de dos pixeles de 250m localizados en la misma columna de dos líneas consecutivas que contribuyen a un pixel de 500m $r_{i}$ es el valor de la reflactancia del pixel a 500m, $a_{i}$ es el factor desconocido de la normalización y $n$ es el número de elementos en la fila de la imagen de baja resolución. 
+
+Es importante remarcar que la normalización arriba descrita se basa en la geometría del sensor MODIS, de como los píxeles de baja resolución se sobrelapan con los de alta, el usar esa normalización para el caso de VIIRS, ver las figuras \ref{bandas_modis} y \ref{bandas_viirs}, a pesar de que mejora la correlación de las bandas no está sustentada en ningún modelo de sensores.  

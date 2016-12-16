@@ -7,7 +7,7 @@
 
 %GRÁFICOS
 \usepackage{graphicx}
-\graphicspath{ {img/aux/} }
+\graphicspath{ {img/} }
 \usepackage{tikz}
 
 
@@ -38,7 +38,7 @@
 
 %BIBLIOGRAFÍA
 \usepackage{cite}
-%\usepackage[nottoc,numbib]{tocbibind}
+\usepackage[nottoc,numbib]{tocbibind}
 
 %LINKS Y REFERENCIAS
 %Poner al final
@@ -50,5 +50,15 @@
 %Para poner en negritas
 \usepackage[font=footnotesize,bf]{caption}
 
+%Para escribir código
+\usepackage{listings}
+
 \long\def\comment#1{}  										% para comentar bloques
 \long\def\fix#1{***Begin FIX--- {\bf #1 } ---end FIX***}   	% para indicar donde hacer correciones
+
+%Para poner apéndices
+\usepackage[toc,page]{appendix}
+\renewcommand{\appendixtocname}{Ap\'endices}
+\renewcommand{\appendixpagename}{Ap\'endices}
+
+
