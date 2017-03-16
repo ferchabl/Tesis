@@ -1,3 +1,379 @@
 \chapter{Resultados}
 
 \section{Descripción de los datos}
+
+A continuación se muestran las pruebas realizadas en imágenes donadas por la CONABIO que corresponden a diferentes partes de la república mexicana y que fueron tomadas en diferentes días, en cada una de las pruebas definiremos la fecha y el área a la que corresponden. Las imágenes que procesamos fueron previamente georeferenciadas así que únicamente aplicamos cada una de las etapas de nuestro algoritmo propuesto, obteniendo como resultado la bandas $M_{3}, M_{4}, M_{8}, M_{10}$ y  $M_{11}$ en alta resolución. Todas las subimágenes (ventanas) originales y reconstrucciones que se muestran a continuación son de 200 pixeles por 200 pixeles, por lo tanto, las imágenes creadas a partir de nuestro algoritmo (mejoradas o de alta resolución) son de 400 por 400 pixeles. Dichas subimágenes se crearon a partir de las bandas $M_{3}, M_{4}, M_{8}$ para poder observar de una manera visual los resultados obtenidos con nuestro algoriritmo. Para cada una de las pruebas mostramos la subimagen creada a partir de los datos originales, una subimagen creada a partir de la reconstrucción de los datos originales haciendo uso de nuestro algoritmo propuesto y las subimagenes creadas a partir de los datos en alta resolución obtenidos de la aplicación de las tres diferentes variaciones de nuestro algoritmo. Con el fin de mostrar las relaciones que existen entre las bandas y que el proceso de normalización no afecta en la matriz de covarianza únicamente en la primer imagen de prueba mostramos la matrices de covarianza entre los datos originales y la reconstrucción de los datos antes y después de la normalización. Por último, mostramos una gráfica de barras en la cual se puede observar el grado de reconstrucción de cada banda, para ver que tan bien fue reconstruida cada una de las bandas y cuál de las tres variantes de nuestro algoritmo es la que mejor trabaja.
+
+
+\section{Imagen 1}
+
+Los datos de esta sección corresponden al día 20 de enero del año 2015 y a la región del lago de Chapala, Jalisco. 
+
+En la imagen \ref{rec1} se observa la imagen original y las reconstrucciones de la misma haciendo uso de los tres diferentes métodos de reducción de dimensión. En la imagen \ref{ar1} se muestra la imagen original y las imágenes mejoradas (cuatro veces la resolución original) haciendo uso de los diferentes métodos de reducción de dimensión. 
+
+\begin{figure}[!htbp]
+  \centering
+  \subfloat[Método de la mediana.]{\includegraphics[scale=.4]{recmed1.png}\label{recmed1}}
+  \qquad
+  \subfloat[Método de selección aleatoria.]{\includegraphics[scale=.4]{recran1.png}\label{recran1}}
+  \qquad
+  \subfloat[Método de la media aritmética.]{\includegraphics[scale=.4]{recprom1.png}\label{recprom1}}  
+  \\
+  \subfloat[Imagen original]{\includegraphics[scale=.4]{orig1.png}\label{orig1}}
+  \caption{Reconstrucción de la imagen 1 haciendo uso de diferentes métodos de reducción de dimensión.}
+  \label{rec1}
+\end{figure}
+
+
+\begin{figure}[!htbp]
+  \centering
+  \subfloat[Método de la mediana.]{\includegraphics[scale=.4]{armed1.png}\label{armed1}}
+  \qquad
+  \subfloat[Método de selección aleatoria.]{\includegraphics[scale=.4]{arran1.png}\label{arran1}}
+  \qquad
+  \subfloat[Método de la media aritmética.]{\includegraphics[scale=.4]{arprom1.png}\label{arprom1}}  
+  \\
+  \subfloat[Imagen original]{\includegraphics[scale=.4]{orig1.png}\label{orig1}}
+  \caption{Alta resolución de la imagen 1 haciendo uso de diferentes métodos de reducción de dimensión}
+  \label{ar1}
+\end{figure}	
+
+
+\begin{table}[ht!]
+\begin{center}
+\begin{tabular}{| p{2cm} | p{2cm} | p{2cm} | p{2cm} | p{2cm} | p{2cm} |}
+\hline
+ & $m_{3}$ & $m_{4}$ & $m_{8}$ & $m_{10}$ & $m_{11}$ \\
+\hline
+$m_{3}$ & \bf{0.80432192} & 0.81302049 & 0.58870387 & 0.6456995 & 0.71148819\\
+\hline
+$m_{4}$ & 0.81302049 & \bf{0.8219363} & 0.60473085 & 0.66140181 & 0.72623681\\
+\hline
+$m_{8}$ & 0.58870387 & 0.60473085 & \bf{0.88047572} & 0.88267186 & 0.85423424\\
+\hline 
+$m_{10}$ & 0.6456995 & 0.66140181 & 0.88267186 & \bf{0.89225925} & 0.87521834\\
+\hline
+$m_{11}$ & 0.71148819 & 0.72623681 & 0.85423424 & 0.87521834 & \bf{0.87657594}\\
+\hline
+\end{tabular}
+\end{center} 	
+\caption{Método de reducción por selección aleatoria antes de la normalización.} \label{covran1}
+\end{table}
+
+\hfill
+
+\begin{table}[ht!]
+\begin{center}
+\begin{tabular}{| p{2cm} | p{2cm} | p{2cm} | p{2cm} | p{2cm} | p{2cm} |}
+\hline
+ & $m_{3}$ & $m_{4}$ & $m_{8}$ & $m_{10}$ & $m_{11}$ \\
+\hline
+$m_{3}$ & \bf{0.80432192} & 0.21302049 & 0.58870387 & 0.6456995 & 0.71148819\\
+\hline
+$m_{4}$ & 0.81302049 & \bf{0.8219363} & 0.60473085 & 0.66140181 & 0.72623681\\
+\hline
+$m_{8}$ & 0.58870387 & 0.60473085 & \bf{0.88047572} & 0.88267186 & 0.85423424\\
+\hline 
+$m_{10}$ & 0.6456995 & 0.66140181 & 0.88267186 & \bf{0.89225925} & 0.87521834\\
+\hline
+$m_{11}$ & 0.71148819 & 0.72623681 & 0.85423424 & 0.87521834 & \bf{0.87657594}\\
+\hline
+\end{tabular}
+\end{center} 	
+\caption{Método de reducción por selección aleatoria después de la normalización.} \label{covrannorm1}
+\end{table}
+
+\hfill
+
+\begin{table}[ht!]
+\begin{center}
+\begin{tabular}{| p{2cm} | p{2cm} | p{2cm} | p{2cm} | p{2cm} | p{2cm} |}
+\hline
+ & $m_{3}$ & $m_{4}$ & $m_{8}$ & $m_{10}$ & $m_{11}$ \\
+\hline
+$m_{3}$ & \bf{0.91789243} & 0.92292771 & 0.50120964 & 60635475 & 0.71608218\\
+\hline
+$m_{4}$ & 0.92292771 & \bf{0.92849496} & 0.52282197 & 0.62647532 & 0.73374713\\
+\hline
+$m_{8}$ & 0.50120964 & 0.52282197 & \bf{0.94552275} & 0.92893891 & 0.807849696\\
+\hline 
+$m_{10}$ & 0.60635475 & 0.62647532 & 0.92893891 & \bf{0.93252063} & 0.90676491\\
+\hline
+$m_{11}$ & 0.7160929218 & 0.73374713 & 0.87849696 & 0.90676491 & \bf{0.91218984}\\
+\hline
+\end{tabular}
+\end{center} 	
+\caption{Método de reducción por mediana antes de la normalización.} \label{covmed1}
+\end{table}
+
+
+\hfill
+
+\begin{table}[ht!]
+\begin{center}
+\begin{tabular}{| p{2cm} | p{2cm} | p{2cm} | p{2cm} | p{2cm} | p{2cm} |}
+\hline
+ & $m_{3}$ & $m_{4}$ & $m_{8}$ & $m_{10}$ & $m_{11}$ \\
+\hline
+$m_{3}$ & \bf{0.91789243} & 0.92292771 & 0.50120964 & 60635475 & 0.71608218\\
+\hline
+$m_{4}$ & 0.92292771 & \bf{0.92849496} & 0.52282197 & 0.62647532 & 0.73374713\\
+\hline
+$m_{8}$ & 0.50120964 & 0.52282197 & \bf{0.94552275} & 0.92893891 & 0.807849696\\
+\hline 
+$m_{10}$ & 0.60635475 & 0.62647532 & 0.92893891 & \bf{0.93252063} & 0.90676491\\
+\hline
+$m_{11}$ & 0.7160929218 & 0.73374713 & 0.87849696 & 0.90676491 & \bf{0.91218984}\\
+\hline
+\end{tabular}
+\end{center} 	
+\caption{Método de reducción por mediana después de la normalización.} \label{covmednorm1}
+\end{table}
+
+
+\hfill
+
+\begin{table}[ht!]
+\begin{center}
+\begin{tabular}{| p{2cm} | p{2cm} | p{2cm} | p{2cm} | p{2cm} | p{2cm} |}
+\hline
+ & $m_{3}$ & $m_{4}$ & $m_{8}$ & $m_{10}$ & $m_{11}$ \\
+\hline
+$m_{3}$ & \bf{0.94078602} & 0.94741077 & 0.4983874 & 0.61300997 & 0.71766604\\
+\hline
+$m_{4}$ & 0.94741077 & \bf{0.95444463} & 0.51853708 & 0.63254206 & 0.73547117\\
+\hline
+$m_{8}$ & 0.4983874 & 0.51853708 & \bf{0.93513707} & 0.94124608 & 0.89500604\\
+\hline 
+$m_{10}$ & 0.613000997 & 0.63254206 & 0.94124608 & \bf{0.9655272} & 0.94050359\\
+\hline
+$m_{11}$ & 0.71766604 & 0.73547117 & 0.89500609 & 0.94050359 & \bf{0.94237502}\\
+\hline
+\end{tabular}
+\end{center} 	
+\caption{Método de reducción por media aritmética antes de la normalización.} \label{covprom1} 
+\end{table}
+
+
+\hfill
+
+\begin{table}[ht!]
+\begin{center}
+\begin{tabular}{| p{2cm} | p{2cm} | p{2cm} | p{2cm} | p{2cm} | p{2cm} |}
+\hline
+ & $m_{3}$ & $m_{4}$ & $m_{8}$ & $m_{10}$ & $m_{11}$ \\
+\hline
+$m_{3}$ & \bf{0.94078602} & 0.94741077 & 0.4983874 & 0.61300997 & 0.71766604\\
+\hline
+$m_{4}$ & 0.94741077 & \bf{0.95444463} & 0.51853708 & 0.63254206 & 0.73547117\\
+\hline
+$m_{8}$ & 0.4983874 & 0.51853708 & \bf{0.93513707} & 0.94124608 & 0.89500604\\
+\hline 
+$m_{10}$ & 0.613000997 & 0.63254206 & 0.94124608 & \bf{0.9655272} & 0.94050359\\
+\hline
+$m_{11}$ & 0.71766604 & 0.73547117 & 0.89500609 & 0.94050359 & \bf{0.94237502}\\
+\hline
+\end{tabular}
+\end{center} 	
+\caption{Método de reducción por media aritmética después de la normalización.} \label{covpromnorm1} 
+\end{table}
+
+
+En la imagen \ref{bar1} se muestra ua gráfica de barras construida a partir de los valores correspondientes a las diagonales de cada una de las matrices de covarianza \ref{covmed1}, \ref{covprom1} y \ref{covran1}.
+
+\begin{figure}
+\centering
+\includegraphics[scale=.5]{bar1.png}
+\caption{Gráfica de la imagen 1.}
+\label{bar1}
+\end{figure}
+
+
+De la gráfica \ref{bar1} podemos decir que la variación de nuestro algoritmo con la cual obtuvimos una mejor reconstrucción es la de la reducción de dimensión por promedio, siendo la variación de reducción por selección aleatoria la que realiza una peor reconstrucción. Para este caso en particular la banda $M_{10}$ es la mejor reconstruida y al banda $M_{3}$ es la peor reconstruida. De las matrices \ref{covmed1}, \ref{covprom1} y \ref{covran1} podemos ver altas correlaciones entre las bandas $M_{4}$ y $M_{3}$, $M_{10}$ y $M_{11}$ y finalmente $M_{8}$ y $M_{10}$.
+
+\newpage
+
+\section{Imagen 2}
+
+Los datos de esta sección corresponden al día 30 de mayo del año 2016 y a la región de las Islas Marías, Nayarit. 
+
+En la imagen \ref{rec2} se observa la imagen original y las reconstrucciones de la misma haciendo uso de los tres diferentes métodos de reducción de dimensión. En la imagen \ref{ar2} se muestra la imagen original y las imágenes mejoradas haciendo uso de los diferentes métodos de reducción de dimensión. 
+
+\begin{figure}[!tbp]
+  \centering
+  \subfloat[Método de la mediana.]{\includegraphics[scale=.4]{recmed2.png}\label{recmed2}}
+  \qquad
+  \subfloat[Método de selección aleatoria.]{\includegraphics[scale=.4]{recran2.png}\label{recran2}}
+  \qquad
+  \subfloat[Método de la media aritmética.]{\includegraphics[scale=.4]{recprom2.png}\label{recprom2}}  
+  \\
+  \subfloat[Imagen original]{\includegraphics[scale=.4]{orig2.png}\label{orig2}}
+  \caption{Reconstrucción de la imagen 2 haciendo uso de diferentes métodos de reducción de dimensión.}
+  \label{rec2}
+\end{figure}
+
+
+\begin{figure}
+\centering
+\includegraphics[scale=.5]{bar2.png}
+\caption{Gráfica de la imagen 2.}
+\label{bar2}
+\end{figure}
+
+\begin{figure}[!tbp]
+  \centering
+  \subfloat[Método de la mediana.]{\includegraphics[scale=.4]{armed2.png}\label{armed2}}
+  \qquad
+  \subfloat[Método de selección aleatoria.]{\includegraphics[scale=.4]{arran2.png}\label{arran2}}
+  \qquad
+  \subfloat[Método de la media aritmética.]{\includegraphics[scale=.4]{arprom2.png}\label{arprom2}}  
+  \\
+  \subfloat[Imagen original]{\includegraphics[scale=.4]{orig2.png}\label{orig2}}
+  \caption{Alta resolución de la imagen 2 haciendo uso de diferentes métodos de reducción de dimensión}
+  \label{ar2}
+\end{figure}
+
+Como mencionamos anteriorimente y dado que las matrices de covarianza correspondientes a esta imagen no aportan información adicional a la que obtuvimos con las matrices de la sección anterior prescindiremos de ellas y a partir de esta sección solamente mostramos las graficas de barra que nos indican cual de las tres variantes de nuestro método es la que nos otorga mejores resultados en cada caso. La gráfica correspondiente a esta sección se puede observar en la imagen \ref{bar2}.  
+
+
+
+De la gráfica \ref{bar2} podemos decir que la variación de nuestro algorimo con la cual obtuvimos una mejor reconstrucción es la de la reducción de dimensión por promedio, siendo la variación de reducción por selección aleatoria la que realiza una peor reconstrucción.
+
+
+
+
+\section{Imagen 3}
+
+Los datos de esta sección corresponden al día 28 de abril del año 2016 y a la región de Puerto Vallarta, Jalisco. 
+
+En la imagen \ref{rec3} se observa la imagen original y las reconstrucciones de la misma haciendo uso de los tres diferentes métodos de reducción de dimensión. En la imagen \ref{ar3} se muestra la imagen original y las imágenes mejoradas haciendo uso de los diferentes métodos de reducción de dimensión. 
+
+\begin{figure}[!htbp]
+  \centering
+  \subfloat[Método de la mediana.]{\includegraphics[scale=.4]{recmed3.png}\label{recmed3}}
+  \qquad
+  \subfloat[Método de selección aleatoria.]{\includegraphics[scale=.4]{recran3.png}\label{recran3}}
+  \qquad
+  \subfloat[Método de la media aritmética.]{\includegraphics[scale=.4]{recprom3.png}\label{recprom3}}  
+  \\
+  \subfloat[Imagen original]{\includegraphics[scale=.4]{orig3.png}\label{orig3}}
+  \caption{Reconstrucción de la imagen 3 haciendo uso de diferentes métodos de reducción de dimensión.}
+  \label{rec3}
+\end{figure}
+
+
+\begin{figure}[!tbp]
+  \centering
+  \subfloat[Método de la mediana.]{\includegraphics[scale=.4]{armed3.png}\label{armed3}}
+  \qquad
+  \subfloat[Método de selección aleatoria.]{\includegraphics[scale=.4]{arran3.png}\label{arran3}}
+  \qquad
+  \subfloat[Método de la media aritmética.]{\includegraphics[scale=.4]{arprom3.png}\label{arprom3}}  
+  \\
+  \subfloat[Imagen original]{\includegraphics[scale=.4]{orig3.png}\label{orig3}}
+  \caption{Alta resolución de la imagen 3 haciendo uso de diferentes métodos de reducción de dimensión}
+  \label{ar3}
+\end{figure}
+
+La imagen \ref{bar3} nos muestra la gráfica de barras correspondiente a esta imagen.
+
+\begin{figure}
+\centering
+\includegraphics[scale=.5]{bar3.png}
+\caption{Gráfica de la imagen 3.}
+\label{bar3}
+\end{figure}
+
+De la gráfica \ref{bar3} podemos decir que la variación de nuestro algoritmo con la cual obtuvimos una mejor reconstrucción es la de la reducción de dimensión por promedio, siendo la variación de reducción por selección aleatoria la que realiza una peor reconstrucción.
+
+\section{Imagen 4}
+
+Los datos de esta sección corresponden al día 3 de mayo del año 2016 y a la región de la Isla Ángel de la Guarda, Baja California y  la Isla Tiburón, Sonora.
+
+ En la imagen \ref{rec4} se observa la imagen original y las reconstrucciones de la misma haciendo uso de los tres diferentes métodos de reducción de dimensión. En la imagen \ref{ar4} se muestra la imagen original y las imágenes mejoradas haciendo uso de los diferentes métodos de reducción de dimensión. 
+
+\begin{figure}[!tbp]
+  \centering
+  \subfloat[Método de la mediana.]{\includegraphics[scale=.4]{recmed4.png}\label{recmed4}}
+  \qquad
+  \subfloat[Método de selección aleatoria.]{\includegraphics[scale=.4]{recran4.png}\label{recran4}}
+  \qquad
+  \subfloat[Método de la media aritmética.]{\includegraphics[scale=.4]{recprom4.png}\label{recprom4}}  
+  \\
+  \subfloat[Imagen original]{\includegraphics[scale=.4]{orig4.png}\label{orig4}}
+  \caption{Reconstrucción de la imagen 4 haciendo uso de diferentes métodos de reducción de dimensión.}
+  \label{rec4}
+\end{figure}
+
+
+\begin{figure}
+\centering
+\includegraphics[scale=.5]{bar4.png}
+\caption{Gráfica de la imagen 4.}
+\label{bar4}
+\end{figure}
+
+
+\begin{figure}[!tbp]
+  \centering
+  \subfloat[Método de la mediana.]{\includegraphics[scale=.4]{armed4.png}\label{armed4}}
+  \qquad
+  \subfloat[Método de selección aleatoria.]{\includegraphics[scale=.4]{arran4.png}\label{arran4}}
+  \qquad
+  \subfloat[Método de la media aritmética.]{\includegraphics[scale=.4]{arprom4.png}\label{arprom4}}  
+  \\
+  \subfloat[Imagen original]{\includegraphics[scale=.4]{orig4.png}\label{orig4}}
+  \caption{Alta resolución de la imagen 4 haciendo uso de diferentes métodos de reducción de dimensión}
+  \label{ar4}
+\end{figure}
+
+La imagen \ref{bar4} nos muestra la gráfica de barras correspondiente a esta imagen.
+
+
+
+De la gráfica \ref{bar4} podemos decir que la variación de nuestro algorimo con la cual obtuvimos una mejor reconstrucción es la de la reducción de dimensión por promedio, siendo la variación de reducción por selección aleatoria la que realiza una peor reconstrucción.
+
+
+\section{Imagen 5}
+
+Los datos de esta sección corresponden al día 19 de febrero del año 2017 y a la región de la Reserva de la Biosfera Mipimi, Durango. 
+
+En la imagen \ref{rec5} se observa la imagen original y las reconstrucciones de la misma haciendo uso de los tres diferentes métodos de reducción de dimensión. En la imagen \ref{ar3} se muestra la imagen original y las imágenes mejoradas haciendo uso de los diferentes métodos de reducción de dimensión. 
+
+\begin{figure}[!htbp]
+  \centering
+  \subfloat[Método de la mediana.]{\includegraphics[scale=.4]{recmed5.png}\label{recmed5}}
+  \qquad
+  \subfloat[Método de selección aleatoria.]{\includegraphics[scale=.4]{recran5.png}\label{recran5}}
+  \qquad
+  \subfloat[Método de la media aritmética.]{\includegraphics[scale=.4]{recprom5.png}\label{recprom5}}  
+  \\
+  \subfloat[Imagen original]{\includegraphics[scale=.4]{orig5.png}\label{orig5}}
+  \caption{Reconstrucción de la imagen 5 haciendo uso de diferentes métodos de reducción de dimensión.}
+  \label{rec5}
+\end{figure}
+
+
+\begin{figure}[!tbp]
+  \centering
+  \subfloat[Método de la mediana.]{\includegraphics[scale=.4]{armed5.png}\label{armed5}}
+  \qquad
+  \subfloat[Método de selección aleatoria.]{\includegraphics[scale=.4]{arran5.png}\label{arran5}}
+  \qquad
+  \subfloat[Método de la media aritmética.]{\includegraphics[scale=.4]{arprom5.png}\label{arprom5}}  
+  \\
+  \subfloat[Imagen original]{\includegraphics[scale=.4]{orig5.png}\label{orig5}}
+  \caption{Alta resolución de la imagen 5 haciendo uso de diferentes métodos de reducción de dimensión}
+  \label{ar5}
+\end{figure}
+
+La imagen \ref{bar5} nos muestra la gráfica de barras correspondiente a esta imagen.
+
+\begin{figure}
+\centering
+\includegraphics[scale=.5]{bar5.png}
+\caption{Gráfica de la imagen 5.}
+\label{bar5}
+\end{figure}
+
+De la gráfica \ref{bar5} podemos decir que la variación de nuestro algoritmo con la cual obtuvimos una mejor reconstrucción es la de la reducción de dimensión por promedio, siendo la variación de reducción por selección aleatoria la que realiza una peor reconstrucción.

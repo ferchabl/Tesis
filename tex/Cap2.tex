@@ -106,11 +106,9 @@ x & y \\
 En la imagen \ref{gpo} se observa la gráfica de los datos anteriores y como es que se distrubuyen de una manera casi cuadrática.
 
 \begin{figure}
-
 \centering
 \includegraphics[scale=.5]{gmcp.png}
 \caption{Gráfica de los puntos generados.}\label{gpo}
-
 \end{figure}
 
 Ahora queremos ajustar una función del tipo $y = \theta_{1} + \theta_{2}x + \theta_{3}x^{2}$ así que la matriz de diseño A queda de la siguiente manera: 
@@ -138,11 +136,9 @@ $\theta = (A^{T}A)^{-1}(A^{T}b)$
 El vector de soluciones que calculamos en python es $\theta = (6.4, 0.01 ,0.99)^{T} $ y en la gráfica \ref{ajuste} se observa la curva que ajustamos con mínimos cuadrados.
 
 \begin{figure}
-
 \centering
 \includegraphics[scale=.5]{ajuste.png}
 \caption{Curva de ajuste calculada con mínimos cuadrados.}\label{ajuste}
-
 \end{figure}
 	
 
@@ -150,11 +146,11 @@ El código en python para generar los conjuntos de datos mencionados anteriormen
   
 \section{Análisis de Componentes principales}
 
-El materia de esta sección revisará el Análisis de Componentes principales y presenta una versión resumida de las fuentes \fix{poner fuentes}.
+El material de esta sección revisará el Análisis de Componentes principales y presenta una versión resumida de las fuentes \fix{poner fuentes}.
 
-Cuando se colecta información de una muestra de datos, lo más común es tomar en cuenta el mayor número posible de variables con el fin de que tener una buena descripción de nuestros datos. Sin embargo, si tomamos demasiadas variables tendremos que considerar un número elevado de coeficientes de regresión, dificultando las visualización de las relaciones entre las variables. Otro problema que existe cuando tenemos demasiadas variables es la fuerte correlación que existe en las variables. Es decir, si una variable resulta de la combinación lineal de otras dos, podríamos prescindir de ella. Con lo anterior vemos que es necesario y factible reducir el número de variables. 
+Cuando se colecta información de una muestra de datos, lo más común es tomar en cuenta el mayor número posible de variables con el fin de tener una buena descripción de nuestros datos. Sin embargo, si tomamos demasiadas variables tendremos que considerar un número elevado de coeficientes de regresión, dificultando las visualización de las relaciones entre las variables. Otro problema que existe cuando tenemos demasiadas variables es la fuerte correlación que existe en las variables. Es decir, si una variable resulta de la combinación lineal de otras dos, podríamos prescindir de ella. Con lo anterior vemos que es necesario y factible reducir el número de variables. 
 
-El análisis de componentes principales (PCA por sus siglas en inglés) es un método que permite reducir las dimensiones de un conjunto de datos, conservando, en la medida de lo posible, la variación presente en las variables que lo componen, perdiendo así, la menor cantidad posble de información útil. 
+El análisis de componentes principales (PCA por sus siglas en inglés) es un método que permite reducir las dimensiones de un conjunto de datos, conservando, en la medida de lo posible, la variación presente en las variables que lo componen, perdiendo así, la menor cantidad posible de información útil. 
 
 La idea principal es la siguiente: dado un conjunto de datos \textbf{X} de dimensión $n \times m$ (n observaciones de m variables cada una) se analiza si es posible representar adecuadamente está información con un número menor de variables llamadas componentes principales, los cuales tienen las características siguientes: 
 
@@ -197,7 +193,7 @@ Del mismo modo que se eligen $y_{1}, y_{2}, ..., y_{n}$, incorreladas entre sí,
 
 Existen diferentes maneras de realizar PCA, a continuación explicaremos una de las más utilizadas.
 
-Una manera de realizar PCA es haciendo uso de la \textbf{Descomposición en valores singulares (SVD}, por sus siglas en inglés) de la matriz \textbf{X}. El primer paso es verificar que la matriz \textbf{X} este centrada a media cero, de no ser así, se realizan las operaciones necesarias para lograr lo anterior. Más delante se darán los detalles del algoritmo, por el momento nos limitaremos a describir los pasos y motivar el procedimiento. Una vez que la matriz \textbf{X} esta centrada a media cero se realiza la descomposición en valores singulares de la misma, como se muestra a continuación: 
+Una manera de realizar PCA es haciendo uso de la \textbf{Descomposición en valores singulares (SVD}, por sus siglas en inglés) de la matriz \textbf{X}; los detalles de este método se pueden revisar en las referencias \fix{poner referencias de SVD}. El primer paso es verificar que la matriz \textbf{X} este centrada a media cero, de no ser así, se realizan las operaciones necesarias para lograr lo anterior. Una vez que la matriz \textbf{X} esta centrada a media cero se realiza la descomposición en valores singulares de la misma, como se muestra a continuación: 
 
 \begin{center}
 	\textbf{SVD(X)} = $U \Delta V ^\top$ 
@@ -211,7 +207,15 @@ donde: \\ \\
 
 El siguiente paso es analizar la matriz $\Delta$ para decidir el número de componentes principales que se usarán para describir a la matriz original. Además de que está matriz es diagonal tiene la propiedad de que sus valores están en orden descendente, lo cual indica el grado de variación que conserva cada uno de los componentes principales. Con el conocimiento de lo anterior decidimos cuantos de estos números ayudan a retener la mayor variación posible y definimos \textbf{ncp} (número de componentes pricipales).
 
-El código en Python para realizar PCA sobre un conjunto de datos $X$ de dimendiones $(m \times n)$, es decir $m$ muestras de $m$ variables cada una se puede consultar en el apéndice \ref{Cpca} 
+El código en Python para realizar PCA sobre un conjunto de datos $X$ de dimendiones $(n \times m)$, es decir $n$ muestras de $m$ variables cada una se puede consultar en el apéndice \ref{Cpca}.
+
+En la imagen \ref{ejemploPCA} se muestra un ejemplo realizado con el código en python del apéndice \ref{Cpca} y tomando las primeras 10 muestras de la base de datos Iris, la cual se puede consultar en el apéndice \ref{Iris}. Primero se muestran  los datos originales, posteriormente se muestra la reconstrucción de los mismos datos, haciendo uso del PCA y tomando 2 componentes principales para realizar la misma; por último se muestra el error entre los valores originales y los valores calculados. 
+
+\begin{figure}
+\centering
+\includegraphics[scale=.5]{ejemploPCA.png}
+\caption{Ejemplo de una reconstrucción de datos haciendo uso de PCA.}\label{ejemploPCA}
+\end{figure}
 
 \section{Regresión con componentes principales}
 
@@ -242,12 +246,12 @@ Ahora, supongamos que se desea realizar un ajuste por mínimos cuadrados de $\ma
 
 El desarrollo del método anteriormente descrito lo haremos en forma visual e iremos introduciendo al lector paso por paso y concluiremos al final con un ejemplo donde mostraremos cual es la deficiencia que se comentó.
 
-Lo primero es realizar una reducción de las dimensiones de $\mathbb{X}$ y $\mathbb{Y}$ haciendo uso de PCA como se muesta en la imagen \ref{regresionPCA}, obteniéndose: 
+Lo primero es realizar una reducción de las dimensiones de $\mathbb{X}$ y $\mathbb{Y}$ haciendo uso de PCA como se muesta en la imagen \ref{red}, obteniéndose: 
  
 \begin{figure}
 \centering
 \includegraphics[scale=.5]{regresionPCA.png}
-\caption{Etapa de entrenamiento.}\label{regresionPCA}
+\caption{Etapa de entrenamiento.}\label{red}
 \end{figure}
  
 $
@@ -271,9 +275,9 @@ $
 
 sabiendo que $k' < k$ y que $n' < n$. 
 
-Una vez que tenemos $\mathbb{X'}$ y $\mathbb{Y'}$ debemos realizar un ajuste por mínimos cuadrados para calcular $\mathbb{Y'}$ a partir de $\mathbb{X'}$, es decir debemos encontrar el valor de $\theta$ resolviendo $\mathop{m\acute{i}n}_{\theta \in \mathbb{R}^{n}} ||A'\theta - \mathbb{Y'}||^{2}$ .
+Una vez que tenemos $\mathbb{X'}$ y $\mathbb{Y'}$ debemos realizar un ajuste por mínimos cuadrados para calcular $\mathbb{Y'}$ a partir de $\mathbb{X'}$, es decir debemos encontrar el valor de $\theta$ resolviendo $\mathop{m\acute{i}n}_{\theta \in \mathbb{R}^{n}} ||\mathbb{A'} \theta - \mathbb{Y'}||^{2}$ .
 
-A la etapa anterior se le conoce como etapa de entrenamiento o aprendizaje. Si posteriormente tengo un conjunto de datos no observados ($\mathbb{NY}$) a predecir, es decir, tengo nuevos valores de $\mathbb{X}$ ($\mathbb{NX}$), para realizar la predicción de las $y's$ correspondientes a $\mathbb{NX}$ tendríamos que reducir la demensión de $NX$ al tamoño de $\mathbb{X'}$ obteniendo así $\mathbb{NX'}$ y posteriormente aplicar el ajuste de mínimos cuadrado obtenido en la etapa de entrenamiento para predecir $\mathbb{NY'}$. Por último, una vez que obtuvimos $NY'$ sabemos que esta está en la dimensión del espacio de los PCA's, es decir es de dimensión $m x n'$ y queremos regresarla a su espacio original de $\mathbb{Y}$, es decir, que sea de dimensión $m x n$. Lo anterior se observa en la imagen \ref{regresionPCA}.
+A la etapa anterior se le conoce como etapa de entrenamiento o aprendizaje. Si posteriormente tengo un conjunto de datos no observados ($\mathcal{Y}$) a predecir, es decir, tengo nuevos valores de $\mathbb{X}$ ($\mathcal{X}$), para realizar la predicción de las $y's$ correspondientes a $\mathcal{X}$ tendríamos que reducir la demensión de $\mathcal{X}$ al tamaño de $\mathbb{X'}$ obteniendo así $\mathcal{X'}$ y posteriormente aplicar el ajuste de mínimos cuadrados obtenido en la etapa de entrenamiento para predecir $\mathcal{Y'}$. Por último, una vez que obtuvimos $\mathcal{Y'}$ sabemos que esta está en la dimensión del espacio de los PCA's, es decir es de dimensión $m x n'$ y queremos regresarla a su espacio original de $\mathbb{Y}$, es decir, que sea de dimensión $m x n$. Lo anterior se observa en la imagen \ref{regresionPCA}.
 
 \begin{figure}
 \centering
@@ -285,32 +289,265 @@ El procedimiento anteriormente descrito se describe matemáticamente en los sigu
 
 \begin{enumerate}
 \item Cálculo de $n'$ y $k'$ (componentes principales) \\
-	$U_{x}\delta_{x}V_{x}^{T} = SVD(\mathbb{X})$\\
-	$U_{y}\delta_{y}V_{y}^{T} = SVD(\mathbb{Y})$
+	$U_{\mathbb{X}}\delta_{\mathbb{X}}V_{\mathbb{X}}^{T} = SVD(\mathbb{X})$\\
+	$U_{\mathbb{Y}}\delta_{\mathbb{Y}}V_{\mathbb{Y}}^{T} = SVD(\mathbb{Y})$
 
 \item Reducción de dimensionalidad\\
-	$\mathbb{X'} = U_{x}\mathbb{X}$\\
-	$\mathbb{Y'} = U_{y}\mathbb{Y}$\\
-	$\mathbb{NX'} = U_{x} N\mathbb{X}$
+	$\mathbb{X'} = U_{\mathbb{X}}\mathbb{X}$\\
+	$\mathbb{Y'} = U_{\mathbb{Y}}\mathbb{Y}$
+	
 
 \item Cálculo de parámetros de regresión\\
-	$\mathop{m\acute{i}n}_{\theta \in \mathbb{R}^{n}} ||A'\theta -y'||^{2}$
+	$\mathop{m\acute{i}n}_{\theta \in \mathbb{R}^{n}} ||\mathbb{A'}\theta - \mathbb{Y'}||^{2}$
+	donde $\mathbb{A'}$ es la matriz de diseño(de mínimos cuadrados) generada con $\mathbb{X'}$.
 
 \item Predicción de datos no observados\\
-	$\mathbb{NY'} = \theta(\mathbb{NX'})$
+	$\mathcal{X'} = U_{\mathcal{X}} \mathcal{X}$\\
+	$\mathcal{Y'} = \mathcal{A'} \theta$\\
+	donde $\mathcal{A'}$ es la matriz de diseño correspondiente a $\mathcal{X'}$
 	
 \item Regreso a dimensión original\\ 
-	$\mathbb{NY} = U_{x}^{T}\mathbb{NY'} $
+	$\mathcal{Y} = U_{x}^{T}\mathcal{Y'} $
 
 \end{enumerate}
 
-Al realizar el procedimiento podemos entoncotrarnos con el siguiente problema: cabe la posibilidad de que al reducir las demensiones tatdo de $\mathbb{X}$ como de $\mathbb{Y}$ (haciendo un análisis de componentes principales en cada caso) se dejen fuera los elementos que permitan hacer una buena predicción de $\mathbb{Y}$ a partir de $\mathbb{X}$. por lo que necesitamos un método que nos ayude a consevar no los componentes principales, si no los más correlacionados entre las variables $X$ y $Y$. Este método ya existe y se llama Regresión de Mínimos Cuadrados Parciales (PLS, por sus siglas en inglés) y lo veremos en la siguiente sección. 
+Al realizar el procedimiento podemos encotrarnos con el siguiente problema: cabe la posibilidad de que al reducir las dimensiones tanto de $\mathbb{X}$ como de $\mathbb{Y}$ (haciendo el análisis de componentes principales en cada caso) se dejen fuera los elementos que permitan hacer una buena predicción de $\mathbb{Y}$ a partir de $\mathbb{X}$. por lo que necesitamos un método que nos ayude a consevar no los componentes principales, si no los más correlacionados entre las variables $X$ y $Y$. Este método ya existe y se llama Regresión de Mínimos Cuadrados Parciales (PLS, por sus siglas en inglés) y lo veremos en la siguiente sección. 
 
-\section{Regesión de mínimos cuadrados parciales}
+\section{Regresión de mínimos cuadrados parciales}
 
-La regresión de mínimos cuadrado parciales (PLS, por sus siglas en inglés) es una técnica reciente que combina las características de del análisis de componentes principales y la regresión múltiple. Su principal objetivo es predecir o analizar un conjunto de variables dependientes a partir de un conjunto de variables dependientes o predictores. Esta predicción se logra extrayendo de los predictores un conjunto de factores ortogonales llamados varibles latentes que tiene el mayor valor de predicción. Es un método estadístico que tiene relación con la regresión de componentes principales. Esté método se utiliza para encontrar las relaciones fundamentales entre las matrices $X$ y $Y$.
+La regresión de mínimos cuadrado parciales (PLS, por sus siglas en inglés) es una técnica reciente que combina las características de análisis de componentes principales y la regresión múltiple. Su principal objetivo es predecir o analizar un conjunto de variables dependientes ($Y$) a partir de un conjunto de variables independientes o predictores ($X$). Esta predicción se logra extrayendo de los predictores un conjunto de factores ortogonales llamados variables latentes que tiene el mayor valor de predicción. Es un método estadístico que tiene relación con la regresión de componentes principales. Esté método se utiliza para encontrar las relaciones fundamentales entre las matrices $X$ y $Y$. La regresión de mínimos cuadrados parciales es particularmente útil cuando necesitamos predecir un conjunto de variables a partir de un conjunto grande de variables independientes (predictores).  
 
-La regresión de mínimos cuadrados parciales es particular útil cuando necesitamos predecir un conjunto de variables a partir de un conjunto grande de variables independientes (predictores).  
+La idea principal de este método es realizar primero un análisis de componentes principales (PCA) en la matriz de diseño y después usar solamente los primeros $k$ componentes para realizar la regresión, pero dando preferencia a los que están mayormente correlacionados con las variables dependientes. 
+
+En PLS se asume que las matrices de datos $X$ y $Y$ están dadas por los siguientes modelos lineales: 
+
+\begin{equation}\label{modeloPLS}
+X = TP^{T} + N_{1}, \qquad
+Y = UQ^{T} + N_{2} 
+\end{equation}
+
+con
+
+\begin{equation}\label{modeloPLS2}
+U = T\beta, \qquad P^{T}P = I, \qquad Q^{T}Q = I
+\end{equation}
+
+es decir, podemos ver a matriz $P$ y la matriz $Q$ son matrices base ortonormales y existe una transformación lineal entre las matrices de coeficietes $U$ y $T$. Para resolver este problema es necesario imponer algunas restricciónes, en particular en PLS usa el siguiente enfoque.
+
+
+Sea la matriz $P = P[i]$ con $i = 1,2, ..., n$ donde los $P_{i}$ son vectores columna, el método de regresión de mínimos cuadrados parciales puede verse como la implementación a la solución del problema expuesto a continuación:  
+
+\begin{equation}\label{PLSP}
+\mathop{arg \quad max}_{p} ||corr(Y, PX)||^{2} var(PX)
+\end{equation}
+\begin{center}
+sujeto a \\
+$p_{i}^{T}p_{j} = 0$  y $p_{i}^{T}p_{i} = 1$ \\
+donde $p_{i}$ es la columna i-ésima de $P$
+\end{center}
+
+De lo anterior puede verse que se busca una matriz ortogonormal $P$ que cumpla lo siguiente: 
+
+\begin{enumerate}[a)]
+\item Maximice la correlación entre la variable Y y la rotación $PX$.
+\item Los vectores columnas (ortogonales de $P$) maximicen la varianza de $X$.
+\end{enumerate}
+
+Como podemos ver, PLS difiere de PCA en que, además de pedir maximizar la varianza, también pide maximizar la correlación de la proyección con la variable dependiente. 
+
+Un algoritmo que implementa una solución al problema \ref{PLSP} es el llamado NIPALS, el cual se muestra a continuación, el cual fue tomado de la referencia \cite{pls} es el siguiente: 
+
+\begin{enumerate}
+
+\item Inicialice $\mathbf{u}_{1}$, por ejemplo, con la primera de la matriz $\mathbf{Y}$.
+\item $\mathbf{w}_{1} = \frac{\mathbf{X}^{T}\mathbf{u}_{1}}{\mathbf{u}_{1}^{T}\mathbf{u}_{1}}$.
+\item $\mathbf{w}_{1} = \frac{\mathbf{w}_{1}}{||\mathbf{w}_{1}||}$.
+\item $\mathbf{t}_{1} = \mathbf{X}\mathbf{w}_{1}$.
+\item $\mathbf{c}_{1} = \frac{\mathbf{Y}^{T}\mathbf{t}_{1}}{\mathbf{t}_{1}^{T}\mathbf{t}_{1}}$.
+\item $\mathbf{c}_{1} = \frac{\mathbf{c}_{1}}{||\mathbf{c}_{1}||}$.
+\item $\mathbf{u}_{1}^{*} = \mathbf{Y}\mathbf{c}_{1}$.
+\item $\mathbf{u}_{\Delta} = \mathbf{u}_{1}^{*} - \mathbf{u}_{1}$.
+\item $\Delta\mathbf{u} = \mathbf{u}_{\Delta}^{T}\mathbf{u}_{\Delta}$.
+\item Si $\Delta \mathbf{u} < \varepsilon$, entonces pare; si no $\mathbf{u}_{1} = \mathbf{u}^{*}$ y vuelva  al paso 2.
+\newcounter{enumTemp}
+\setcounter{enumTemp}{\theenumi}
+\end{enumerate}
+
+Aunque la  derivación del algoritmo NIPALS está fuera del alncance de esta tesis, daremos a continuación una breve justificación a su sutento teórico. Recomendamos al lector revisar el material de las referencias \cite{nipals} y \cite{nipals2}.
+
+Si en paso 2 del algoritmo se está ejecutando la iteración $j +1 $, entonces: 
+
+\begin{center}
+$\mathbf{w}_{1}^{j+1} = \frac{\mathbf{X}^{T}\mathbf{u}_{1}^{j}}{(\mathbf{u}_{1}^{j})^{T}\mathbf{u}_{1}^{j}}$. 
+\end{center}
+
+Ahora, considerando el paso 7. Con $\mathbf{u}_{1}^{j}$, reemplazando $\mathbf{c}_{1}^{j}$ por los pasos 6 y 5, reemplanzando $\mathbf{t}_{1}^{j}$ por el paso 4 y $\mathbf{w}_{1}^{j}$ por el paso 3 se obtiene: 
+
+\begin{center}
+$\mathbf{w}_{1}^{j+1} = \mathbf{X}^{T}\mathbf{YY^{T}Xw_{1}^{j}} k$
+\end{center}
+
+donde la constante $k$ depende de las normas de los diferentes vectores. Esta última ecuación es en efecto el método de las potencias para el cálculo de eigen valores, donde $\mathbf{w}_{1}$ es el eigenvector asociado al eigenvalor mas grande de la matriz $\mathbf{X}^{T}\mathbf{YY^{T}X}$. De manera similar puede mostrarse que: 
+
+\begin{center}
+$\mathbf{c}_{1}^{j+1} = \mathbf{Y}^{T}\mathbf{XX^{T}Yc_{1}^{j}} k$
+\end{center}
+
+converge al eigenvector asociado al eigenvalor más grande de la matriz $\mathbf{Y}^{T}\mathbf{XX^{T}Yc_{1}^{j}} k$. 
+
+Ahora, una vez concluido el paso 10, el método NIPALS continúa con los siguientes pasos: 
+
+\begin{enumerate} 
+\setcounter{enumi}{\theenumTemp}
+\item $\mathbf{p}_{1} = \frac{\mathbf{X^{T}\mathbf{t}_{1}}}{\mathbf{t}_{1}^{T}\mathbf{t}_{1}}$.
+
+\item $\mathbf{q}_{1} = \frac{\mathbf{Y}^{T}\mathbf{u}_{1}}{\mathbf{u}_{1}^{T}\mathbf{u}_{1}}$.
+
+\item $\mathbf{d}_{1} = \frac{\mathbf{u}_{1}^{T}\mathbf{t}_{1}}{\mathbf{t}_{1}^{T}\mathbf{t}_{1}}$.
+\item $\mathbf{X}_{1} = \mathbf{X} - \mathbf{t}_{1}\mathbf{p}_{1}^{T}$ y $\mathbf{Y} = \mathbf{Y} - \mathbf{d}_{1}\mathbf{t}_{1}\mathbf{q}_{1}^{T}$.
+
+
+\end{enumerate}
+
+La línea 14 índica como se actualizan los datos $X$ y $Y$ substrayendo el componente recién calculado.
+
+Ahora definamos las matrices $P$, $Q$, $T$ y $U$ cuyas columnas corresponden a los vectores $p$,$q$, $t$ y $u$ calcaludos mediante el algoritmo NIPALS. 
+
+Luego, dado que PLS calculó $T$ y $U$ que cumplen con el modelo lineal \ref{modeloPLS} $\beta$ se calcula mediante: 
+
+\begin{equation}
+\mathop{m\acute{i}n}_{\beta} ||U-T\beta||^{2}
+\end{equation}
+
+Sustituyendo $U$ en el modelo \ref{modeloPLS2} tenemos: 
+
+\begin{center}
+$Y = T \beta Q^{T} = XP\beta Q^{T}$.
+\end{center}
+
+Esta fórmula nos permite hacer la predicción pa cualquier $x'$: 
+
+\begin{equation}\label{regresionPLS}
+y' = x'P\beta Q^{T}.
+\end{equation}
+
+Una implementación propia en python de NIPALS está en el apéndice \ref{nipals}
+
+\section{Algoritmo de fusión de imágenes propuesto}
+
+En está sección explicamos en que consiste la metodología del algoritmo de fusión de imágenes satélitales VIIRS que proponemos y desarrollamos a lo largo de la elaboración de este trabajo de tesis.
+
+El objetivo de nuesto algoritmo es mejorar la resolución especial de las imágenes satélitales de las bandas de baja resolución $M_{3}, M_{4}, M_{8}, M_{10}, M_{11}$ del sensor VIIRS. Con el fin anterior utilizamos las bandas de alta resolución ($I_{1}, I_{2}, I_{3}$) como bandas predictoras para inferir información acerca de las bandas de baja resolución ($M_{3}, M_{4}, M_{8}, M_{10}, M_{11}$). 
+
+A continuación mostramos un listado de las etapas en las que consiste nuestro método y en las secciones siguientes desarrollaremos con detalle cada una de ellas. 
+
+\begin{enumerate}
+\item Creación de máscaras.
+\item Reducción de dimensión.	 
+\item Predicción de bandas de baja resolución. 
+\item Normalización.
+\end{enumerate}
+
+
+\subsection{Creación de máscaras}
+
+Una vez que relizamos la lectura de los datos, utilizamos la información de la tabla \ref{invalid_values} para obtener máscaras de procesamiento de las imágenes que consisten en imágenes de tipo de datos binario, las cuales son creadas con el fin de diferenciar las áreas que se desea procesar de la imagen de áreas que consisten en pixeles muertos o que carecen de información en el escaneo de datos. La máscara se genera validando la información en cada una de las bandas que participan en el proceso; llamaremos ``información válida'' a la información que se desea procesar. Este es un paso muy importante ya que estas máscaras de procesamiento se tomarán en cuenta para algunos de los pasos siguientes con el fin de obtener los mejores resultados posibles al procesar solamente información válida. 
+
+\subsection{Reducción de dimensiones}
+
+Como se muestra en la imagen \ref{bandas_viirs} sabemos que en las imágenes VIIRS, un pixel en una imagen de baja resolución corresponde a 4 pixeles en una imagen de alta resolución. Por tanto tenemos que reducir la resolución de los pixeles de las bandas de alta resolución a la dimensión de los pixeles de baja resolución. Lo anterior para tener tanto las bandas predictoras como las bandas respuesta en la misma dimensión y poder así crear un modelo para mejorar la resolución de las bandas de baja resolución. 
+
+Para realizar lo anterior se tomamos en cuenta las máscaras de procesamiento creadas en el paso anterior y realizamos la reducción de dimensión haciendo uso de tres métodos diferentes con el fin de obversar cual es el que nos otorga los mejores resultados. Los métodos anteriores se realizan pixel a pixel, es decir, toman un grupo de 4 pixeles de alta resolución y los reducen a un pixel de baja resolución obteniendo como producto final una imagen de baja resolución por cada una de las imágenes de alta resolución.
+
+Cabe mencionar que para cada imagen de baja resolución (por cada banda), se crea una máscara de procesamiento, ya que se puede dar el caso en el que ninguno de los 4 pixeles corresponsientes tenga información válida y por lo tanto el pixel de baja resolución tampoco proporcinará información válida para el procesamiento de datos.
+
+Se entendie que al finalizar este proceso obtendremos las bandas $I_{1}$, $I_{2}$, $I_{3}$ en baja resolución.Para fines de explicar las etapas siguientes llamaremos a estas bandas en baja resolución $i_{1}$, $i_{2}$, $i_{3}$ respectivamente.
+
+A continuación describiremos cada uno de los tres métodos que utilizamos para realizar la reducción de dimensión.
+
+\subsubsection{Media aritmética}
+
+En este método consideramos que todos los pixeles que tienen información válida nos brindan información confiable así que con ayuda de las máscaras de procesamiento verificamos cuántos y cuáles de los 4 pixeles correspondientes tienen información válida y sacamos el promedio de los mismos para obtener el pixel de baja resolución correspondiente. En el caso de que ninguno de los 4 pixeles cuente con información válida lo indicamos en la máscara de procesamiento correspondiente. 
+
+\subsubsection{Mediana}
+
+En este método consideramos que podemos tener pixeles que a pesar de tener información válida no contengan información confiable, por tanto ordenamos el valor de los pixeles que contienen información válida y obtenemos el valor del pixel de baja resolución correspondiente calculando la mediana de dichos valores, tratando de descatar así valores muy alejados del valor real. Al igual que el método anterior, si ninguno de los cuatro pixeles contiene información válida se especifica en el máscara correspondiente.
+
+\subsubsection{Selección aleatoria}
+
+En este método, al igual que el primero, consideramos que los cuatro pixeles contiene información confiable, así que elegimos aleatoriamente el valor de uno de los cuatro pixeles para asignarlo al valor de baja resolución correspondiente. Si el pixel que elegimos no cuenta con información válida se especifica en la máscara de procesamiento correspondiente.
+
+\subsection{Predicción de las bandas de alta resolución}
+
+A continuación enlistaremos y describiremos cada una de las subetapas correspondientes a esta etapa del método.
+
+\subsubsection{Preprocesamiento de datos}
+
+En esta subetapa del método preparamos los datos que servirán como entrenamiento para el algoritmo de PLS que usaremos en una de las subetapas siguientes; para ello realizamos lo siguiente: 
+
+\begin{enumerate}[I)]
+\item \textbf{Selección de la ventana: }  Creamos una subimagen a partir de la imagen original, la cual será procesada en la etapa siguiente. Para ello consideramos las coordenadas del pixel superior izquierdo de la subimagen y su dimensión, además de los límites de la imagen original para ver si es posible crear la subimagen. Además de crear la subimagen también creamos una submáscara a partir de la máscara de la imagen original.
+\item \textbf{Construcción de la matriz $\mathbb{X}$ (matriz predictora de entrenamiento):  } Realizamos la construcción de la matriz $\mathbb{X}$, que sirve como matriz predictora de entrenamiento del algoritmo PLS. El número de renglones  de $\mathbb{X}$ corresponde al número de pixeles de la venta, es decir, si la ventana es de 200 pixeles por 200 pixeles el número de  renglones de $\mathbb{X}$ será 40,000; el número de columnas es tres e indica el valor del las bandas $i_{1}, i_{2}, i_{3}$ (las bandas i's en baja resolución);  respectivamente. Podemos decir entonces que el valor $\mathbb{X}_{ij}$ de la matriz $\mathbb{X}$ corresponde al valor de la banda $j$ del pixel $i$, con $i = 1,2,3$ y $j = 1, 2, ..., p$, donde $p$ es el número de pixeles de la ventana.     
+\item \textbf{Construcción de la matriz $\mathbb{Y}$ (matriz respuesta de entrenamiento): 
+} Realizamos la construcción de la matriz $\mathbb{Y}$ que sirve como matriz respuesta de entrenamiento para el algoritmo PLS. Al igual que la matriz $\mathbb{X}$ el número de renglones corresponde al número de pixeles de la ventana y el número de columnas es cinco e indica el valor original de las bandas $m_{3}, m_{4}, m_{8}, m_{10}, m_{11}$. Hacemos referencia a las bandas con m mínusula para indicar que están en baja resolución (resolución original).
+\item \textbf{Construcción del vector indicador:} Una vez que tenemos $\mathbb{X}$ y $\mathbb{Y}$ debemos crear un vector que nos indique cuáles de los pixeles que forman nuestras matrices  $\mathbb{X}$ y $\mathbb{Y}$ son los que tienen información válida, y por tanto son los que debemos procesar. Para ello hacemos uso de las submáscaras de procesamiento correspondientes a la ventana con la que estamos trabajando; para cada pixel verificamos si este contiene información válida en cada uno de sus valores de las bandas i's y de las bandas m's; de ser así, asignamos un uno a la posición correspondiente de este pixel en el vector indicador, de lo contrario colocamos un cero para hacer referencia a que este pixel no tiene que ser procesado. En resumen, el vector indicador es un vector binario de tamaño igual al número de pixeles de la ventana.
+\item \textbf{Construcción de la matriz $\mathcal{X}$ (matriz predictora):} Una vez que tenemos los datos de entrenamiento procedemos a construir la matriz $\mathcal{X}$ que es la matriz que sirve como matriz predictora para calcular los valores de las bandas  $M_{3}, M_{4}, M_{8}, M_{10}, M_{11}$; las denotamos con M mayúscula para indicar que han sido mejoradas o están en alta resolución. Los renglones de la matriz $\mathcal{X}$ corresponden a los pixeles de la ventana para las bandas I's antes de ser reducidas de dimensión. Es decir, equivale a cuatro veces el número de renglones de la matriz $\mathbb{X}$; el número de columnas es seguirá siendo 3 y cada columna indica el valor de las bandas $I_{1}, I_{2}, I_{3}$ (valores originales).
+\end{enumerate}
 
 
 
+\subsubsection{Etapa de aprendizaje o entrenamiento}
+
+En está etapa utilizamos $\mathbb{X}$ y $\mathbb{Y}$ para construir un modelo de la forma 
+
+\begin{center}
+$y' = x'P\beta Q^{T}$.
+\end{center}
+
+El calculo de las matrices $P$ y $Q$ y del vector $\beta$ se realizan mediante PLS. Ver la sección 2.4 para mayor detalles. 
+
+Para construir este modelo hacemos uso del vector indicador para procesar únicamente los pixeles que tengan información válida. 
+
+\subsubsection{Regresión}
+
+En esta etapa aplicamos el modelo de la etapa anterior para calcular $\mathcal{Y}$, la cual tiene el mismo número de reglones que $\mathcal{X}$, tiene 5 columnas y cada una de estas representa el valor de las bandas $M_{3}, M_{4}, M_{8}, M_{10}, M_{11}$ en alta resolución.
+
+\subsection{Normalización}
+
+Ya que hemos mejora la resolución de las bandas de baja resolución donde llamaremos m a la banda de baja resolución y M a la banda de alta resolución que calculamos. Lo que pretendemos al realizar la normalización es que tanto el promedio como la varianza de m y M sean iguales. Lo cual matemáticamente se vería en el siguiente procedimiento: 
+
+
+\begin{enumerate}
+\item Calculamos la media de m y M: \\ \\
+$\mu = \frac{1}{k} \sum_{k} m_{k} \qquad\qquad \eta = \frac{1}{l}\sum_{l} M_{l}$
+\item Calculamos la desviación estándar de m y M \\ \\
+$s = \sqrt{\frac{(\sum_{k} m_{k}) - \mu)^{2}}{k} } \qquad\qquad \mathcal{S} = \sqrt{\frac{(\sum_{l} M_{l}) - \eta)^{2}}{l}}$
+\item Hacemos que M tenga media cero y varianza unitaria \\ \\
+$\hat M = (\frac{M - \eta}{\mathcal{S}})$
+\item Hacemos que la media y la desviación estandar de M sean iguales a las de m\\ \\
+$\hat M \leftarrow \hat Ms  + \mu$
+\end{enumerate} 
+
+\subsection{Variantes}
+
+El algoritmo descrito anteriormente es el resultado de una serie de pruebas y variaciones que se hicieron al mismo, siendo la versión presentada en este trabajo la que otorga mejores resultados. Dichas variaciones no serán descritas a detalle por fines prácticos, pero a continuación mencionaremos algunas de las más relevantes. 
+
+La motivación de este algoritmo parte del hecho de que se pensaba que en el sensor VIIRS existían 5 bandas de alta resolución para inferir 5 bandas de baja resolución, así que el obejtivo inicial era utilizar el algoritmo PLS para hacer una reducción de las bandas predictoras (de alta resolución) para inferir 5 bandas a partir de solamente 3; pero en el proceso descrubrimos que únicamente contabamos con una 3 bandas predictoras ya que las dos bandas restantes con las que pensabamos trabajar miden emisividad en el rango en vez de reflectancia. Así que para resolver el problema anterior partimos de la idea de no hacer reducción de las bandas y predecir 5 bandas a partir de 3, pero después de una serie de experimentos concluimos en predecir 5 bandas a partir de 2. 
+
+Con el fin de aumentar el número de variables predictoras decidimos inlcuir el NDVI (Índice de vegetación normalizada), el cual incluímos de diferentes maneras (el índice sólo, el índice al cuadrado, etc.) pero no aportó más información al proceso,c así que decidimos no utilizarlo.
+
+
+\begin{table}[ht!]
+\begin{center}
+\begin{tabular}{| p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm} |}
+\hline
+  & $i_{1}$ & $i_{2}$ & $i_{3}$ & $m_{3}$ & $m_{4}$ & $m_{8}$ & $m_{10}$ & $m_{11}$ \\
+\hline
+$i_{1}$ & \bf{1} & -0.20 & 0.09 & 0.88 & 0.93 & -0.29 & 0.09 & 0.46\\
+\hline
+$i_{12}$ & -0.28 & \bf{1} & 0.60 & -0.49 & -0.38 & -0.29 & 0.09 & 0.46\\
+\hline
+\end{tabular}
+\end{center} 	
+\caption{Correlación entre bandas originales.} \label{oirgcorr}
+\end{table}
